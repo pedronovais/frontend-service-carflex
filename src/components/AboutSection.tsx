@@ -18,14 +18,14 @@ const AboutSection = () => {
     title: "Suporte 24h",
     description: "Assistência integral."
   }];
-  return <section id="sobre" className="py-24 bg-white relative overflow-hidden">
+  return <section id="sobre" className="bg-white relative overflow-hidden my-0 py-[100px]">
       {/* Background watermark */}
       <div className="absolute top-12 right-8 text-[120px] lg:text-[180px] font-black text-secondary/5 leading-none tracking-tighter pointer-events-none">
         SOBRE NÓS
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center py-[100px]">
           {/* Left - Image with badge */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
