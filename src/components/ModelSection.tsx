@@ -30,7 +30,7 @@ const ModelSection = () => {
     title: "Iniciamos a operação",
     description: "Estruturamos a frota e iniciamos o suporte contínuo."
   }];
-  return <section id="modelo" className="py-24 bg-primary relative overflow-hidden">
+  return <section id="modelo" className="py-24 bg-secondary relative overflow-hidden">
       {/* Futuristic background elements */}
       <div className="absolute inset-0">
         {/* Grid pattern */}
