@@ -51,7 +51,7 @@ const PrinciplesSection = () => {
               <p className="text-white/80 text-sm md:text-base mb-4 max-w-sm">
                 Do primeiro contato à entrega do veículo, acompanhamos cada etapa.
               </p>
-              <Button className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-semibold rounded-full">
+              <Button className="gap-2 bg-white hover:bg-white/90 text-secondary font-semibold rounded-full">
                 Solicitar Orçamento
                 <ArrowRight className="w-4 h-4" />
               </Button>
