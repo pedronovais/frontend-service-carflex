@@ -20,8 +20,18 @@ const PrinciplesSection = () => {
     title: "Suporte 24h",
     items: ["Assistência integral", "Atendimento rápido", "Veículo reserva"]
   }];
-  return <section className="relative py-16 lg:py-24 bg-muted/30 overflow-hidden">
+  return <section className="relative py-16 lg:py-24 bg-secondary overflow-hidden">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
+        <div className="text-center mb-12 lg:mb-16">
+          <p className="text-primary text-sm md:text-base font-semibold tracking-widest uppercase mb-3">
+            CONHEÇA A CARFLEX
+          </p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
+            NOSSOS PRINCÍPIOS
+          </h2>
+        </div>
+
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-stretch">
           {/* Left side - Image with overlay content */}
           <div className="relative rounded-3xl overflow-hidden min-h-[400px] lg:min-h-[500px]">
