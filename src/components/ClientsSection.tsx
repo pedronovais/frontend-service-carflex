@@ -40,7 +40,7 @@ const ClientsSection = () => {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ backgroundImage: `url(${clientsBackground})` }}
       />
-      <div className="absolute inset-0 backdrop-blur-md bg-primary-foreground/90" />
+      <div className="absolute inset-0 backdrop-blur-sm bg-primary-foreground/85" />
       
       <div className="container mx-auto px-6 md:px-[100px] my-[20px] py-[20px] relative z-10">
         {/* Header Row */}
