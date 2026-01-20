@@ -44,7 +44,7 @@ const ModelSection = () => {
       }} />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10 bg-secondary">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <span className="inline-flex items-center gap-2 text-accent font-medium text-sm">
