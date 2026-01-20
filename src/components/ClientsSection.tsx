@@ -93,7 +93,7 @@ const ClientsSection = () => {
                 <img 
                   src={client.logo} 
                   alt={client.name} 
-                  className="h-14 sm:h-16 md:h-20 lg:h-28 w-auto max-w-[140px] sm:max-w-[180px] object-contain transition-all duration-500" 
+                  className="h-20 sm:h-24 md:h-28 lg:h-36 w-auto max-w-[180px] sm:max-w-[220px] object-contain transition-all duration-500" 
                 />
               </motion.div>
             ))}
