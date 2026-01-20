@@ -62,81 +62,75 @@ const DifferentialsSection = () => {
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
       
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        {/* Feature Cards */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-24">
+          {[{
+            icon: Car,
+            title: "Veículos adequados à operação",
+            desc: "Frota personalizada conforme sua necessidade."
+          }, {
+            icon: RefreshCw,
+            title: "Manutenção inclusa",
+            desc: "Preventiva e corretiva, sem preocupações."
+          }, {
+            icon: Droplets,
+            title: "Seguro completo",
+            desc: "Proteção total para sua operação."
+          }, {
+            icon: Headphones,
+            title: "Contratos flexíveis",
+            desc: "Adaptamos à realidade da sua empresa."
+          }].map((item, index) => (
+            <div key={index} className="group p-6 rounded-xl border border-accent/20 bg-gradient-to-b from-accent/5 to-transparent hover:border-accent/40 transition-all duration-300 text-center">
+              <div className="w-14 h-14 mx-auto mb-4 rounded-lg bg-accent/10 border border-accent/30 flex items-center justify-center">
+                <item.icon className="w-6 h-6 text-accent" />
+              </div>
+              <h4 className="font-bold text-lg text-foreground mb-2">{item.title}</h4>
+              <p className="text-sm text-muted-foreground">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        {/* Como funciona na prática */}
         <div className="text-center mb-16">
           <h3 className="text-3xl lg:text-4xl font-bold text-foreground">
-            Para quem <span className="text-accent border-b-2 border-accent pb-1">faz sentido?</span>
+            Como funciona <span className="text-accent">na prática</span>
           </h3>
         </div>
 
-        {/* Timeline Zigzag */}
-        <div className="relative max-w-5xl mx-auto">
-          {/* Desktop connector line */}
-          <div className="hidden lg:block absolute top-24 left-[12%] right-[12%] h-0.5 border-t-2 border-dashed border-accent/40" />
-          
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
-            {[{
-              icon: "🏢",
-              title: "Empresas",
-              desc: "Com equipe externa ou logística"
-            }, {
-              icon: "🚗",
-              title: "Negócios",
-              desc: "Que não podem ficar sem veículo"
-            }, {
-              icon: "📊",
-              title: "Operações",
-              desc: "Que buscam previsibilidade de custo"
-            }, {
-              icon: "📋",
-              title: "Gestores",
-              desc: "Que querem reduzir carga administrativa"
-            }].map((item, index) => (
-              <div key={index} className={`flex flex-col items-center ${index % 2 === 1 ? 'lg:mt-20' : ''}`}>
-                <div className="relative">
-                  <div className="w-20 h-20 rounded-full bg-accent/10 border border-accent/30 flex items-center justify-center text-3xl shadow-lg shadow-accent/10">
-                    {item.icon}
-                  </div>
-                  <span className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-accent text-background text-sm font-bold flex items-center justify-center shadow-lg">
-                    {index + 1}
-                  </span>
-                </div>
-                <div className="mt-4 text-center">
-                  <h4 className="font-bold text-lg text-foreground">{item.title}</h4>
-                  <p className="text-sm text-muted-foreground mt-1 max-w-[160px]">{item.desc}</p>
-                </div>
+        {/* Steps */}
+        <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto mb-16">
+          {[{
+            num: "01",
+            title: "Entendemos a operação",
+            desc: "Analisamos sua necessidade e identificamos os modelos ideais."
+          }, {
+            num: "02",
+            title: "Indicamos as condições",
+            desc: "Apresentamos veículos e condições para sua operação."
+          }, {
+            num: "03",
+            title: "Iniciamos a operação",
+            desc: "Estruturamos a frota e iniciamos o suporte contínuo."
+          }].map((step, index) => (
+            <div key={index} className="flex flex-col items-center text-center">
+              <div className="w-20 h-20 rounded-full border-2 border-accent/50 flex items-center justify-center mb-6">
+                <span className="text-2xl font-bold text-accent">{step.num}</span>
               </div>
-            ))}
-          </div>
+              <h4 className="font-bold text-lg text-foreground mb-2">{step.title}</h4>
+              <p className="text-sm text-muted-foreground">{step.desc}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Stats Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mt-20 max-w-4xl mx-auto">
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 text-center relative">
-            <div className="absolute top-3 left-3 w-2 h-2 rounded-full bg-accent" />
-            <span className="text-4xl lg:text-5xl font-black text-accent">500+</span>
-            <p className="text-muted-foreground mt-2">Clientes atendidos em BH e região</p>
+        {/* Bottom CTA */}
+        <div className="flex justify-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border/50 bg-card/30">
+            <div className="w-2 h-2 rounded-full bg-accent" />
+            <p className="text-foreground">
+              <span className="font-bold">Sem burocracia.</span> Sem soluções improvisadas.
+            </p>
           </div>
-          
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 text-center relative">
-            <div className="absolute top-1/2 left-3 w-2 h-2 rounded-full bg-accent -translate-y-1/2" />
-            <div className="absolute top-1/2 right-3 w-2 h-2 rounded-full bg-accent -translate-y-1/2" />
-            <span className="text-4xl lg:text-5xl font-black text-accent">24h</span>
-            <p className="text-muted-foreground mt-2">Suporte dedicado à sua operação</p>
-          </div>
-          
-          <div className="bg-card/50 backdrop-blur-sm border border-border/50 rounded-2xl p-8 text-center relative">
-            <div className="absolute bottom-3 right-3 w-2 h-2 rounded-full bg-accent" />
-            <span className="text-4xl lg:text-5xl font-black text-accent">100%</span>
-            <p className="text-muted-foreground mt-2">Veículo reserva garantido</p>
-          </div>
-        </div>
-
-        {/* CTA */}
-        <div className="text-center mt-12">
-          <p className="text-lg text-foreground">
-            Se o veículo é parte da operação,{" "}
-            <a href="#contato" className="font-bold text-accent hover:underline transition-all">a Carflex faz sentido.</a>
-          </p>
         </div>
       </div>
     </section>
