@@ -104,21 +104,9 @@ const ModelSection = () => {
           </h3>
 
           <div className="relative">
-            {/* Connection line */}
-            <div className="hidden lg:block absolute top-12 left-[16.67%] right-[16.67%] h-px">
+            {/* Connection line - positioned below the circles */}
+            <div className="hidden lg:block absolute top-28 left-[16.67%] right-[16.67%] h-px">
               <div className="w-full h-full bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
-              {/* Animated dots on line */}
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
-              left: '0%'
-            }} />
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
-              left: '50%',
-              animationDelay: '0.3s'
-            }} />
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
-              left: '100%',
-              animationDelay: '0.6s'
-            }} />
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
