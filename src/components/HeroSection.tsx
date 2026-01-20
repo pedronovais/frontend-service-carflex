@@ -4,112 +4,117 @@ import heroCar from "@/assets/hero-car.jpg";
 
 const HeroSection = () => {
   return (
-    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-background">
-      {/* Background dark */}
-      <div className="absolute inset-0 bg-secondary" />
-      
-      {/* Diagonal accent lines */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute -top-20 -left-20 w-96 h-96 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute top-1/2 -right-32 w-[600px] h-[600px] bg-accent/15 rounded-full blur-3xl" />
+    <section id="inicio" className="relative min-h-screen flex items-center overflow-hidden bg-secondary">
+      {/* Futuristic background effects */}
+      <div className="absolute inset-0">
+        {/* Gradient orbs */}
+        <div className="absolute top-1/4 -left-32 w-[500px] h-[500px] bg-accent/20 rounded-full blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[600px] h-[400px] bg-accent/10 rounded-full blur-[100px]" />
+        
+        {/* Grid pattern */}
         <div 
-          className="absolute top-0 left-0 w-full h-full opacity-30"
+          className="absolute inset-0 opacity-[0.03]"
           style={{
-            backgroundImage: `repeating-linear-gradient(
-              -45deg,
-              transparent,
-              transparent 100px,
-              hsl(var(--accent) / 0.05) 100px,
-              hsl(var(--accent) / 0.05) 101px
-            )`
+            backgroundImage: `linear-gradient(hsl(var(--accent)) 1px, transparent 1px),
+                              linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)`,
+            backgroundSize: '60px 60px'
           }}
         />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 py-20 lg:py-0">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
-          <div className="space-y-8">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20">
-                <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                <span className="text-sm font-medium text-accent">Locação Corporativa</span>
-              </div>
-              
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight">
-                Locação de veículos
-                <span className="block text-accent mt-2">pensada para manter</span>
-                operações em movimento
-              </h1>
-              
-              <p className="text-lg text-muted-foreground max-w-lg">
-                Soluções em frota corporativa com foco em continuidade, previsibilidade e redução de risco para sua empresa.
-              </p>
+          <div className="space-y-6 lg:space-y-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 backdrop-blur-sm">
+              <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
+              <span className="text-sm font-semibold text-accent">Locação Corporativa</span>
             </div>
+            
+            <h1 className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-[1.1]">
+              <span className="text-foreground">Locação de</span>
+              <br />
+              <span className="text-foreground">veículos</span>
+              <br />
+              <span className="text-accent">pensada para</span>
+              <br />
+              <span className="text-accent">manter</span>
+              <br />
+              <span className="text-foreground">operações em</span>
+              <br />
+              <span className="text-foreground">movimento</span>
+            </h1>
+            
+            <p className="text-base lg:text-lg text-muted-foreground max-w-md">
+              Frota corporativa com continuidade, previsibilidade e zero dor de cabeça.
+            </p>
 
-            <div className="flex flex-wrap gap-4">
-              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-foreground font-semibold px-8">
+            <div className="flex flex-wrap gap-4 pt-2">
+              <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-bold px-8 rounded-full h-12">
                 Solicitar Orçamento
                 <ArrowRight className="w-5 h-5" />
               </Button>
-              <Button size="lg" variant="outline" className="border-border hover:bg-secondary">
+              <Button size="lg" variant="outline" className="border-foreground/20 hover:bg-foreground/5 text-foreground rounded-full h-12 px-8">
                 Conhecer Frota
               </Button>
             </div>
 
             {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t border-border/50">
+            <div className="flex flex-wrap gap-8 lg:gap-12 pt-6">
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Shield className="w-5 h-5 text-accent" />
-                </div>
+                <Shield className="w-5 h-5 text-accent" />
                 <div>
-                  <p className="text-2xl font-bold">100%</p>
+                  <p className="text-xl lg:text-2xl font-bold text-foreground">100%</p>
                   <p className="text-xs text-muted-foreground">Seguro Incluso</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Clock className="w-5 h-5 text-accent" />
-                </div>
+                <Clock className="w-5 h-5 text-accent" />
                 <div>
-                  <p className="text-2xl font-bold">24h</p>
+                  <p className="text-xl lg:text-2xl font-bold text-foreground">24h</p>
                   <p className="text-xs text-muted-foreground">Suporte</p>
                 </div>
               </div>
               <div className="flex items-center gap-3">
-                <div className="p-2 rounded-lg bg-accent/10">
-                  <Truck className="w-5 h-5 text-accent" />
-                </div>
+                <Truck className="w-5 h-5 text-accent" />
                 <div>
-                  <p className="text-2xl font-bold">500+</p>
+                  <p className="text-xl lg:text-2xl font-bold text-foreground">500+</p>
                   <p className="text-xs text-muted-foreground">Veículos</p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Hero Image */}
-          <div className="relative">
-            <div className="relative animate-float">
-              <div className="absolute inset-0 bg-gradient-to-r from-background via-transparent to-transparent z-10 lg:w-32" />
-              <img
-                src={heroCar}
-                alt="Veículo premium da frota Carflex"
-                className="w-full h-auto rounded-2xl shadow-2xl carflex-glow"
-              />
-              {/* Decorative elements */}
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
-              <div className="absolute -top-4 -left-4 w-24 h-24 bg-primary/30 rounded-full blur-xl" />
+          {/* Hero Image - Futuristic frame */}
+          <div className="relative flex justify-center lg:justify-end">
+            <div className="relative">
+              {/* Glow effect behind image */}
+              <div className="absolute inset-0 bg-gradient-to-br from-accent/30 via-transparent to-accent/10 rounded-2xl blur-2xl scale-105" />
+              
+              {/* Image container with gradient border */}
+              <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-accent/20 to-transparent p-[1px]">
+                <div className="relative rounded-2xl overflow-hidden bg-secondary/80 backdrop-blur-sm">
+                  <img
+                    src={heroCar}
+                    alt="Veículo premium da frota Carflex"
+                    className="w-full max-w-lg h-auto object-cover"
+                  />
+                  {/* Overlay gradient */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-secondary/50 via-transparent to-transparent" />
+                </div>
+              </div>
+              
+              {/* Decorative corner accents */}
+              <div className="absolute -top-2 -left-2 w-8 h-8 border-t-2 border-l-2 border-accent rounded-tl-lg" />
+              <div className="absolute -bottom-2 -right-2 w-8 h-8 border-b-2 border-r-2 border-accent rounded-br-lg" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom diagonal cut */}
+      {/* Bottom transition */}
       <div 
-        className="absolute bottom-0 left-0 right-0 h-24 bg-white"
-        style={{ clipPath: "polygon(0 100%, 100% 0, 100% 100%)" }}
+        className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white via-white/80 to-transparent"
       />
     </section>
   );
