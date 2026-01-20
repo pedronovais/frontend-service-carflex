@@ -75,20 +75,12 @@ const ClientsSection = () => {
 
         {/* Logos Grid - Fixed */}
         <div className={`transition-all duration-1000 delay-400 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-16 lg:gap-24 items-center justify-items-center">
-            {clients.map((client, index) => (
-              <div 
-                key={index} 
-                className="group cursor-pointer transition-all duration-500 hover:-translate-y-2 flex items-center justify-center w-full"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  className="h-20 md:h-24 lg:h-28 w-auto max-w-[180px] object-contain transition-all duration-500 group-hover:scale-110" 
-                />
-              </div>
-            ))}
+          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 md:gap-px">
+            {clients.map((client, index) => <div key={index} className="group cursor-pointer p-4 md:p-6 transition-all duration-500 hover:-translate-y-2" style={{
+            animationDelay: `${index * 100}ms`
+          }}>
+                  <img src={client.logo} alt={client.name} className="h-16 md:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110" />
+              </div>)}
           </div>
         </div>
 
