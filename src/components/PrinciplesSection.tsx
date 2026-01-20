@@ -24,7 +24,7 @@ const PrinciplesSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
+          <div className="inline-flex items-center gap-2 text-primary px-4 py-2 rounded-full mb-4 bg-primary-foreground">
             <span className="w-2 h-2 bg-primary rounded-full"></span>
             <span className="text-sm font-semibold uppercase tracking-wide">CONHEÇA A CARFLEX</span>
           </div>
@@ -60,15 +60,15 @@ const PrinciplesSection = () => {
           {/* Right side - Benefits cards grid */}
           <div className="grid grid-cols-2 gap-4 md:gap-6">
             {benefits.map((benefit, index) => <div key={index} className="bg-background rounded-2xl p-5 md:p-6 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
-                <div className="flex items-center gap-3 mb-4">
+                <div className="flex items-center gap-3 mb-4 text-primary-foreground">
                   <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
                     <benefit.icon className="w-5 h-5 text-secondary" />
                   </div>
                 </div>
-                <h3 className="font-bold text-secondary text-lg mb-3">{benefit.title}</h3>
+                <h3 className="font-bold text-lg mb-3 text-primary-foreground">{benefit.title}</h3>
                 <ul className="space-y-1.5">
-                  {benefit.items.map((item, i) => <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
+                  {benefit.items.map((item, i) => <li key={i} className="text-sm flex items-start gap-2 text-primary-foreground">
+                      <span className="mt-1 text-primary-foreground">•</span>
                       {item}
                     </li>)}
                 </ul>
