@@ -1,6 +1,7 @@
 import { ThumbsUp, DollarSign, Shield, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutCoupleImage from "@/assets/about-couple-car.jpg";
+import badgeSticker from "@/assets/badge-sticker.png";
 
 const AboutSection = () => {
   const features = [
@@ -32,18 +33,19 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 via-transparent to-transparent" />
             </div>
 
-            {/* Experience badge */}
+            {/* Experience badge - Sticker */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className="absolute -top-4 right-4 sm:right-8 lg:right-12 bg-accent text-secondary px-4 sm:px-6 py-3 sm:py-4 rounded-lg shadow-xl"
+              transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
+              className="absolute -top-6 right-4 sm:right-8 lg:right-12"
             >
-              <div className="text-center">
-                <span className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black block">10+</span>
-                <span className="text-xs sm:text-sm font-semibold">Anos de<br />Experiência</span>
-              </div>
+              <img 
+                src={badgeSticker} 
+                alt="Selo de experiência Carflex" 
+                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300"
+              />
             </motion.div>
 
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
