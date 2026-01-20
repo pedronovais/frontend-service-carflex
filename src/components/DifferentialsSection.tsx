@@ -42,17 +42,10 @@ const DifferentialsSection = () => {
   ];
 
   return (
-    <section id="diferenciais" className="py-24 pb-32 bg-background relative overflow-hidden">
+    <section id="diferenciais" className="py-24 bg-background relative overflow-hidden">
       {/* Decorative elements */}
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-1/2 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
-
-      {/* Bottom curve transition */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80H1440V40C1440 40 1140 0 720 0C300 0 0 40 0 40V80Z" fill="white" />
-        </svg>
-      </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         <div className="text-center space-y-4 mb-16">
