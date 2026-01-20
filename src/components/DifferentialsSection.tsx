@@ -52,80 +52,52 @@ const DifferentialsSection = () => {
             </div>)}
         </div>
 
-        {/* Process Timeline - Zigzag Style */}
-        <div className="mt-24 space-y-8">
-          <div className="text-center space-y-4 mb-12">
+        {/* How it works - Clean Circle Design */}
+        <div className="mt-24 space-y-12">
+          <div className="text-center mb-16">
             <h3 className="text-3xl lg:text-4xl font-bold">
               Para quem <span className="text-accent">faz sentido?</span>
             </h3>
           </div>
 
-          {/* Timeline Zigzag */}
-          <div className="relative max-w-5xl mx-auto">
-            {/* Desktop connector line */}
-            <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 border-t-2 border-dashed border-accent/30 -translate-y-1/2" />
-            
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-              {[{
-              icon: "🏢",
+          {/* Steps with circles */}
+          <div className="grid md:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
+            {[{
+              number: "01",
               title: "Empresas",
-              desc: "Com equipe externa ou logística"
+              desc: "Com equipe externa ou logística que precisam de mobilidade"
             }, {
-              icon: "🚗",
+              number: "02",
               title: "Negócios",
-              desc: "Que não podem ficar sem veículo"
+              desc: "Que não podem ficar sem veículo em nenhum momento"
             }, {
-              icon: "📊",
+              number: "03",
               title: "Operações",
-              desc: "Que buscam previsibilidade de custo"
+              desc: "Que buscam previsibilidade e controle de custos"
             }, {
-              icon: "📋",
+              number: "04",
               title: "Gestores",
-              desc: "Que querem reduzir carga administrativa"
-            }].map((item, index) => <div key={index} className={`flex flex-col items-center ${index % 2 === 1 ? 'lg:mt-16' : 'lg:-mt-4'}`}>
-                  <div className="relative">
-                    <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center text-2xl border-2 border-accent/50 shadow-lg shadow-accent/20">
-                      {item.icon}
-                    </div>
-                    <span className="absolute -bottom-2 -right-2 w-6 h-6 rounded-full bg-accent text-background text-xs font-bold flex items-center justify-center">
-                      {index + 1}
-                    </span>
-                  </div>
-                  <div className="mt-4 text-center">
-                    <h4 className="font-bold text-lg">{item.title}</h4>
-                    <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
-                  </div>
-                </div>)}
-            </div>
+              desc: "Que querem reduzir a carga administrativa da frota"
+            }].map((item, index) => (
+              <div key={index} className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full border-2 border-accent flex items-center justify-center mb-6 transition-all duration-300 hover:bg-accent/10 hover:scale-105">
+                  <span className="text-xl lg:text-2xl font-bold text-accent">{item.number}</span>
+                </div>
+                <h4 className="font-bold text-lg mb-2">{item.title}</h4>
+                <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+              </div>
+            ))}
           </div>
 
-          {/* Stats Cards */}
-          <div className="grid md:grid-cols-3 gap-6 mt-16 max-w-4xl mx-auto">
-            <div className="carflex-card p-8 text-center relative overflow-hidden">
-              <div className="absolute top-2 right-2 w-3 h-3 rounded-full bg-accent" />
-              <span className="text-4xl lg:text-5xl font-black text-accent">500+</span>
-              <p className="text-muted-foreground mt-2">Clientes atendidos em BH e região</p>
+          {/* Bottom tagline */}
+          <div className="flex justify-center mt-12">
+            <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full border border-border/50 bg-background/50">
+              <div className="w-2 h-2 rounded-full bg-accent" />
+              <p className="text-sm lg:text-base">
+                <span className="font-semibold">Sem burocracia.</span>{" "}
+                <span className="text-muted-foreground">Sem soluções improvisadas.</span>
+              </p>
             </div>
-            
-            <div className="carflex-card p-8 text-center relative overflow-hidden">
-              <div className="absolute bottom-2 left-2 w-3 h-3 rounded-full bg-accent" />
-              <span className="text-4xl lg:text-5xl font-black text-accent">24h</span>
-              <p className="text-muted-foreground mt-2">Suporte dedicado à sua operação</p>
-            </div>
-            
-            <div className="carflex-card p-8 text-center relative overflow-hidden">
-              <div className="absolute top-2 left-2 w-3 h-3 rounded-full bg-accent" />
-              <span className="text-4xl lg:text-5xl font-black text-accent">100%</span>
-              <p className="text-muted-foreground mt-2">Veículo reserva garantido</p>
-            </div>
-          </div>
-
-          {/* CTA */}
-          <div className="text-center mt-12">
-            <p className="text-lg">
-              Se o veículo é parte da operação,{" "}
-              <span className="font-bold text-accent">a Carflex faz sentido.</span>
-            </p>
           </div>
         </div>
       </div>
