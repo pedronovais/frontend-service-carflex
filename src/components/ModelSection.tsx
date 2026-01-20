@@ -1,69 +1,50 @@
 import { Car, Wrench, Shield, FileText } from "lucide-react";
-
 const ModelSection = () => {
-  const pillars = [
-    {
-      icon: Car,
-      title: "Veículos adequados à operação",
-      description: "Frota personalizada conforme sua necessidade.",
-    },
-    {
-      icon: Wrench,
-      title: "Manutenção inclusa",
-      description: "Preventiva e corretiva, sem preocupações.",
-    },
-    {
-      icon: Shield,
-      title: "Seguro completo",
-      description: "Proteção total para sua operação.",
-    },
-    {
-      icon: FileText,
-      title: "Contratos flexíveis",
-      description: "Adaptamos à realidade da sua empresa.",
-    },
-  ];
-
-  const steps = [
-    {
-      step: "01",
-      title: "Entendemos a operação",
-      description: "Analisamos sua necessidade e identificamos os modelos ideais.",
-    },
-    {
-      step: "02",
-      title: "Indicamos as condições",
-      description: "Apresentamos veículos e condições para sua operação.",
-    },
-    {
-      step: "03",
-      title: "Iniciamos a operação",
-      description: "Estruturamos a frota e iniciamos o suporte contínuo.",
-    },
-  ];
-
-  return (
-    <section id="modelo" className="py-24 bg-primary relative overflow-hidden">
+  const pillars = [{
+    icon: Car,
+    title: "Veículos adequados à operação",
+    description: "Frota personalizada conforme sua necessidade."
+  }, {
+    icon: Wrench,
+    title: "Manutenção inclusa",
+    description: "Preventiva e corretiva, sem preocupações."
+  }, {
+    icon: Shield,
+    title: "Seguro completo",
+    description: "Proteção total para sua operação."
+  }, {
+    icon: FileText,
+    title: "Contratos flexíveis",
+    description: "Adaptamos à realidade da sua empresa."
+  }];
+  const steps = [{
+    step: "01",
+    title: "Entendemos a operação",
+    description: "Analisamos sua necessidade e identificamos os modelos ideais."
+  }, {
+    step: "02",
+    title: "Indicamos as condições",
+    description: "Apresentamos veículos e condições para sua operação."
+  }, {
+    step: "03",
+    title: "Iniciamos a operação",
+    description: "Estruturamos a frota e iniciamos o suporte contínuo."
+  }];
+  return <section id="modelo" className="py-24 bg-primary relative overflow-hidden">
       {/* Futuristic background elements */}
       <div className="absolute inset-0">
         {/* Grid pattern */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
-        />
+        <div className="absolute inset-0 opacity-[0.03] bg-secondary" style={{
+        backgroundImage: `linear-gradient(hsl(var(--accent)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--accent)) 1px, transparent 1px)`,
+        backgroundSize: '60px 60px'
+      }} />
         {/* Radial glow */}
-        <div 
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]"
-          style={{
-            background: 'radial-gradient(circle, hsl(var(--accent) / 0.08) 0%, transparent 60%)'
-          }}
-        />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px]" style={{
+        background: 'radial-gradient(circle, hsl(var(--accent) / 0.08) 0%, transparent 60%)'
+      }} />
       </div>
 
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+      <div className="container mx-auto px-4 lg:px-8 relative z-10 bg-secondary">
         {/* Header */}
         <div className="text-center space-y-4 mb-16">
           <span className="inline-flex items-center gap-2 text-accent font-medium text-sm">
@@ -81,21 +62,14 @@ const ModelSection = () => {
 
         {/* Feature cards - Futuristic grid layout */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5">
-          {pillars.map((pillar, index) => (
-            <div
-              key={index}
-              className="group relative"
-            >
+          {pillars.map((pillar, index) => <div key={index} className="group relative">
               {/* Card */}
               <div className="relative h-full p-6 rounded-2xl border border-accent/20 bg-gradient-to-br from-accent/10 via-transparent to-transparent backdrop-blur-sm overflow-hidden transition-all duration-500 hover:border-accent/40 hover:shadow-[0_0_30px_-10px_hsl(var(--accent)/0.3)]">
                 {/* Grid texture inside card */}
-                <div 
-                  className="absolute inset-0 opacity-[0.05]"
-                  style={{
-                    backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--accent)) 1px, transparent 0)`,
-                    backgroundSize: '20px 20px'
-                  }}
-                />
+                <div className="absolute inset-0 opacity-[0.05]" style={{
+              backgroundImage: `radial-gradient(circle at 1px 1px, hsl(var(--accent)) 1px, transparent 0)`,
+              backgroundSize: '20px 20px'
+            }} />
                 
                 {/* Corner accents */}
                 <div className="absolute top-0 left-0 w-10 h-10">
@@ -120,8 +94,7 @@ const ModelSection = () => {
                   </p>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Process steps - Connected timeline */}
@@ -135,14 +108,21 @@ const ModelSection = () => {
             <div className="hidden lg:block absolute top-12 left-[16.67%] right-[16.67%] h-px">
               <div className="w-full h-full bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
               {/* Animated dots on line */}
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{ left: '0%' }} />
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{ left: '50%', animationDelay: '0.3s' }} />
-              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{ left: '100%', animationDelay: '0.6s' }} />
+              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
+              left: '0%'
+            }} />
+              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
+              left: '50%',
+              animationDelay: '0.3s'
+            }} />
+              <div className="absolute top-0 left-0 w-2 h-2 -translate-y-1/2 rounded-full bg-accent animate-pulse" style={{
+              left: '100%',
+              animationDelay: '0.6s'
+            }} />
             </div>
 
             <div className="grid md:grid-cols-3 gap-8">
-              {steps.map((item, index) => (
-                <div key={index} className="relative flex flex-col items-center text-center group">
+              {steps.map((item, index) => <div key={index} className="relative flex flex-col items-center text-center group">
                   {/* Step number circle */}
                   <div className="relative mb-6">
                     {/* Outer ring */}
@@ -158,8 +138,7 @@ const ModelSection = () => {
 
                   <h4 className="font-bold text-lg text-primary-foreground mb-2">{item.title}</h4>
                   <p className="text-sm text-primary-foreground/60 max-w-xs">{item.description}</p>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
@@ -175,8 +154,6 @@ const ModelSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ModelSection;
