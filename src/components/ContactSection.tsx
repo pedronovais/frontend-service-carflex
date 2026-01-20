@@ -1,50 +1,31 @@
 import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import fleetBackground from "@/assets/fleet-background.png";
-
 const ContactSection = () => {
-  const faqs = [
-    {
-      question: "Qual o prazo mínimo de locação?",
-      answer: "Trabalhamos com contratos a partir de 12 meses para garantir as melhores condições e valores para sua empresa. Consulte-nos para casos especiais."
-    },
-    {
-      question: "Vocês oferecem veículo reserva?",
-      answer: "Sim! Oferecemos veículo reserva ilimitado sem custo adicional. Nunca deixamos sua operação parar."
-    },
-    {
-      question: "Quais tipos de veículos estão disponíveis?",
-      answer: "Nossa frota inclui veículos econômicos, intermediários, pick-ups, mini vans (7 lugares) e motos. Todos adaptados às necessidades corporativas."
-    },
-    {
-      question: "Vocês atendem em quais regiões?",
-      answer: "Atendemos Belo Horizonte e toda a região metropolitana. Fazemos entrega e recolhimento sem custo adicional."
-    },
-    {
-      question: "O que está incluído no valor da locação?",
-      answer: "Nossos pacotes incluem manutenção preventiva e corretiva, IPVA, licenciamento, seguro e assistência 24 horas. Não cobramos lavagem simples nem condutor adicional."
-    },
-    {
-      question: "Como funciona o suporte 24 horas?",
-      answer: "Nossa equipe está disponível 24 horas por dia, 7 dias por semana, para atender qualquer necessidade da sua operação, desde assistência na estrada até troca de veículos."
-    },
-  ];
-
-  return (
-    <section id="contato" className="py-24 bg-gray-100 relative overflow-hidden">
+  const faqs = [{
+    question: "Qual o prazo mínimo de locação?",
+    answer: "Trabalhamos com contratos a partir de 12 meses para garantir as melhores condições e valores para sua empresa. Consulte-nos para casos especiais."
+  }, {
+    question: "Vocês oferecem veículo reserva?",
+    answer: "Sim! Oferecemos veículo reserva ilimitado sem custo adicional. Nunca deixamos sua operação parar."
+  }, {
+    question: "Quais tipos de veículos estão disponíveis?",
+    answer: "Nossa frota inclui veículos econômicos, intermediários, pick-ups, mini vans (7 lugares) e motos. Todos adaptados às necessidades corporativas."
+  }, {
+    question: "Vocês atendem em quais regiões?",
+    answer: "Atendemos Belo Horizonte e toda a região metropolitana. Fazemos entrega e recolhimento sem custo adicional."
+  }, {
+    question: "O que está incluído no valor da locação?",
+    answer: "Nossos pacotes incluem manutenção preventiva e corretiva, IPVA, licenciamento, seguro e assistência 24 horas. Não cobramos lavagem simples nem condutor adicional."
+  }, {
+    question: "Como funciona o suporte 24 horas?",
+    answer: "Nossa equipe está disponível 24 horas por dia, 7 dias por semana, para atender qualquer necessidade da sua operação, desde assistência na estrada até troca de veículos."
+  }];
+  return <section id="contato" className="py-24 bg-gray-100 relative overflow-hidden">
       {/* Blurred fleet background */}
       <div className="absolute inset-0">
-        <img 
-          src={fleetBackground} 
-          alt="" 
-          className="w-full h-full object-cover object-center opacity-20 blur-[2px] scale-110"
-        />
+        <img src={fleetBackground} alt="" className="w-full h-full object-cover object-center opacity-20 blur-[2px] scale-110" />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-100/80 via-gray-100/60 to-gray-100/80" />
       </div>
 
@@ -66,20 +47,14 @@ const ContactSection = () => {
 
           <div className="max-w-3xl mx-auto">
             <Accordion type="single" collapsible className="space-y-4">
-              {faqs.map((faq, index) => (
-                <AccordionItem 
-                  key={index} 
-                  value={`item-${index}`}
-                  className="border border-secondary/10 rounded-2xl px-6 bg-gradient-to-br from-gray-50 to-white shadow-sm hover:shadow-md transition-shadow data-[state=open]:shadow-lg data-[state=open]:border-accent/30"
-                >
+              {faqs.map((faq, index) => <AccordionItem key={index} value={`item-${index}`} className="border border-secondary/10 rounded-2xl px-6 bg-gradient-to-br from-gray-50 to-white shadow-sm hover:shadow-md transition-shadow data-[state=open]:shadow-lg data-[state=open]:border-accent/30">
                   <AccordionTrigger className="text-left font-semibold text-secondary hover:text-accent py-5 [&[data-state=open]]:text-accent">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="text-secondary/70 pb-5">
                     {faq.answer}
                   </AccordionContent>
-                </AccordionItem>
-              ))}
+                </AccordionItem>)}
             </Accordion>
           </div>
         </div>
@@ -138,7 +113,8 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <p className="text-xs text-white/50">E-mail</p>
-                      <p className="font-semibold text-white text-sm">contato@carflex.com.br</p>
+                      <p className="font-semibold text-white text-sm">contato
+@carflex.com.br</p>
                     </div>
                   </div>
 
@@ -155,25 +131,15 @@ const ContactSection = () => {
 
                 {/* Map */}
                 <div className="rounded-2xl overflow-hidden border border-white/10 h-64">
-                  <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240218.40169814067!2d-44.10552842852876!3d-19.902430035862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0x5b35795e3ad23997!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1705000000000!5m2!1spt-BR!2sbr"
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    allowFullScreen
-                    loading="lazy"
-                    referrerPolicy="no-referrer-when-downgrade"
-                    title="Localização Carflex"
-                    className="grayscale hover:grayscale-0 transition-all duration-500"
-                  />
+                  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240218.40169814067!2d-44.10552842852876!3d-19.902430035862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0x5b35795e3ad23997!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1705000000000!5m2!1spt-BR!2sbr" width="100%" height="100%" style={{
+                  border: 0
+                }} allowFullScreen loading="lazy" referrerPolicy="no-referrer-when-downgrade" title="Localização Carflex" className="grayscale hover:grayscale-0 transition-all duration-500" />
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default ContactSection;
