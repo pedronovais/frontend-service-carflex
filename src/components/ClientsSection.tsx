@@ -34,7 +34,7 @@ const ClientsSection = () => {
     return () => observer.disconnect();
   }, []);
   return <section ref={sectionRef} className="py-20 md:py-28 overflow-hidden bg-primary-foreground">
-      <div className="container mx-auto px-6 md:px-[100px]">
+      <div className="container mx-auto px-6 md:px-[100px] my-[20px] py-[20px]">
         {/* Header Row */}
         <div className={`flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* Title with accent bar */}
@@ -75,7 +75,7 @@ const ClientsSection = () => {
 
         {/* Logos Grid - Fixed */}
         <div className={`transition-all duration-1000 delay-400 ${isVisible ? "opacity-100" : "opacity-0"}`}>
-          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 md:gap-8">
+          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 md:gap-px">
             {clients.map((client, index) => <div key={index} className="group cursor-pointer" style={{
             animationDelay: `${index * 100}ms`
           }}>
