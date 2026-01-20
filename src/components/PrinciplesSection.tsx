@@ -48,16 +48,16 @@ const PrinciplesSection = () => {
 
           {/* Right side - Benefits cards grid */}
           <div className="grid grid-cols-2 gap-4 md:gap-6">
-            {benefits.map((benefit, index) => <div key={index} className="rounded-2xl p-5 md:p-6 shadow-sm border border-border/50 hover:shadow-md transition-shadow bg-destructive-foreground bg-[sidebar-primary-foreground]">
+            {benefits.map((benefit, index) => <div key={index} className="bg-background rounded-2xl p-5 md:p-6 shadow-sm border border-border/50 hover:shadow-md transition-shadow">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary-foreground">
+                  <div className="w-10 h-10 rounded-xl bg-accent flex items-center justify-center">
                     <benefit.icon className="w-5 h-5 text-secondary" />
                   </div>
                 </div>
-                <h3 className="font-bold text-lg mb-3 text-primary-foreground">{benefit.title}</h3>
+                <h3 className="font-bold text-secondary text-lg mb-3">{benefit.title}</h3>
                 <ul className="space-y-1.5">
                   {benefit.items.map((item, i) => <li key={i} className="text-sm text-muted-foreground flex items-start gap-2">
-                      <span className="mt-1 text-primary-foreground">•</span>
+                      <span className="text-accent mt-1">•</span>
                       {item}
                     </li>)}
                 </ul>
