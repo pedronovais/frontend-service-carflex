@@ -3,20 +3,20 @@ import aboutCoupleImage from "@/assets/about-couple-car.jpg";
 const AboutSection = () => {
   const features = [{
     icon: ThumbsUp,
-    title: "Conforto & Performance",
-    description: "Veículos modernos e bem mantidos para garantir sua operação sem interrupções."
+    title: "Performance",
+    description: "Frota moderna e revisada."
   }, {
     icon: DollarSign,
-    title: "Planos Flexíveis",
-    description: "Contratos adaptados à sua realidade, sem surpresas ou taxas escondidas."
+    title: "Flexibilidade",
+    description: "Contratos sem burocracia."
   }, {
     icon: Shield,
-    title: "Segurança Total",
-    description: "Seguro incluso em todos os veículos para sua tranquilidade."
+    title: "Segurança",
+    description: "Seguro completo incluso."
   }, {
     icon: Clock,
     title: "Suporte 24h",
-    description: "Assistência disponível a qualquer momento que você precisar."
+    description: "Assistência integral."
   }];
   return <section id="sobre" className="py-24 bg-white relative overflow-hidden">
       {/* Background watermark */}
@@ -29,7 +29,7 @@ const AboutSection = () => {
           {/* Left - Image with badge */}
           <div className="relative">
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src={aboutCoupleImage} alt="Casal satisfeito dentro de veículo Carflex" className="w-full h-[400px] lg:h-[500px] object-cover" />
+              <img src={aboutCoupleImage} alt="Profissional Carflex com veículo" className="w-full h-[400px] lg:h-[500px] object-cover object-top" />
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 via-transparent to-transparent" />
             </div>
@@ -49,14 +49,12 @@ const AboutSection = () => {
           {/* Right - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-secondary leading-tight">
-                Mantendo você em movimento com{" "}
-                <span className="text-accent">locação confiável</span>
+            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-secondary leading-tight">
+                Sua operação em{" "}
+                <span className="text-accent">movimento</span>
               </h2>
               <p className="text-secondary/70 text-lg">
-                A Carflex é uma locadora de veículos criada com foco em operação. 
-                Nascemos para atender empresas que dependem de frota no dia a dia 
-                e não podem lidar com imprevistos, veículos parados ou contratos engessados.
+                Locação descomplicada para quem não pode parar.
               </p>
             </div>
 
