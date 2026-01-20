@@ -24,9 +24,10 @@ const PrinciplesSection = () => {
       <div className="container mx-auto px-4">
         {/* Section Header */}
         <div className="text-center mb-12 lg:mb-16">
-          <p className="text-primary text-sm md:text-base font-semibold tracking-widest uppercase mb-3">
-            CONHEÇA A CARFLEX
-          </p>
+          <div className="inline-flex items-center gap-2 bg-primary/10 text-primary px-4 py-2 rounded-full mb-4">
+            <span className="w-2 h-2 bg-primary rounded-full"></span>
+            <span className="text-sm font-semibold uppercase tracking-wide">CONHEÇA A CARFLEX</span>
+          </div>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-white uppercase tracking-tight">
             NOSSOS PRINCÍPIOS
           </h2>
