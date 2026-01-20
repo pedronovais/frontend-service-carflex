@@ -99,12 +99,6 @@ const HeroSection = () => {
         </motion.div>
       </div>
 
-      {/* Bottom curve transition */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80H1440V40C1440 40 1140 0 720 0C300 0 0 40 0 40V80Z" fill="white" />
-        </svg>
-      </div>
     </section>
   );
 };
