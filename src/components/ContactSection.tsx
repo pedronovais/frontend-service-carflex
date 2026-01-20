@@ -1,4 +1,4 @@
-import { Phone, Mail, MapPin, ArrowRight, ChevronDown, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Accordion,
@@ -6,6 +6,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import fleetBackground from "@/assets/fleet-background.png";
 
 const ContactSection = () => {
   const faqs = [
@@ -37,16 +38,14 @@ const ContactSection = () => {
 
   return (
     <section id="contato" className="py-24 bg-white relative overflow-hidden">
-      {/* Background pattern */}
+      {/* Blurred fleet background */}
       <div className="absolute inset-0">
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `linear-gradient(hsl(var(--secondary)) 1px, transparent 1px),
-                              linear-gradient(90deg, hsl(var(--secondary)) 1px, transparent 1px)`,
-            backgroundSize: '60px 60px'
-          }}
+        <img 
+          src={fleetBackground} 
+          alt="" 
+          className="w-full h-full object-cover opacity-[0.08] blur-sm scale-110"
         />
+        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white" />
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
