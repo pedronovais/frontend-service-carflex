@@ -1,7 +1,7 @@
 import { ThumbsUp, DollarSign, Shield, Clock } from "lucide-react";
 import { motion } from "framer-motion";
 import aboutCoupleImage from "@/assets/about-couple-car.jpg";
-import badgeSticker from "@/assets/badge-sticker.png";
+import carflexStamp from "@/assets/carflex-stamp.png";
 
 const AboutSection = () => {
   const features = [
@@ -33,19 +33,27 @@ const AboutSection = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 via-transparent to-transparent" />
             </div>
 
-            {/* Experience badge - Sticker */}
+            {/* Sticker badge with paper effect */}
             <motion.div
-              initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
-              whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+              initial={{ opacity: 0, scale: 0.8, rotate: -15 }}
+              whileInView={{ opacity: 1, scale: 1, rotate: -5 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3, type: "spring", stiffness: 200 }}
-              className="absolute -top-6 right-4 sm:right-8 lg:right-12"
+              transition={{ duration: 0.6, delay: 0.3, type: "spring", stiffness: 150 }}
+              className="absolute -top-8 right-2 sm:right-6 lg:right-10"
             >
-              <img 
-                src={badgeSticker} 
-                alt="Selo de experiência Carflex" 
-                className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain drop-shadow-xl hover:scale-110 transition-transform duration-300"
-              />
+              <div className="relative group">
+                {/* Sticker background effect */}
+                <div className="absolute inset-0 bg-white rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.25)] transform rotate-2" />
+                <div className="relative bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-full p-2 sm:p-3 shadow-[0_4px_20px_rgba(0,0,0,0.15),inset_0_1px_0_rgba(255,255,255,0.8)]">
+                  <img 
+                    src={carflexStamp} 
+                    alt="Selo Carflex Locadora de Veículos" 
+                    className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain group-hover:rotate-12 transition-transform duration-500"
+                  />
+                </div>
+                {/* Subtle shine effect */}
+                <div className="absolute top-2 left-2 w-1/3 h-1/3 bg-gradient-to-br from-white/60 to-transparent rounded-full blur-sm pointer-events-none" />
+              </div>
             </motion.div>
 
             <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
