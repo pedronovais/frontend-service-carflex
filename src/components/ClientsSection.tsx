@@ -2,6 +2,7 @@ import vmcLogo from "@/assets/clients/vmc-logo.png";
 import tutoriLogo from "@/assets/clients/tutori-logo.png";
 import nexusLogo from "@/assets/clients/nexus-logo.png";
 import agileLogo from "@/assets/clients/agile-logo.png";
+import clientsBackground from "@/assets/clients-background.png";
 import { Button } from "@/components/ui/button";
 import { useEffect, useRef, useState } from "react";
 const ClientsSection = () => {
@@ -33,8 +34,15 @@ const ClientsSection = () => {
     }
     return () => observer.disconnect();
   }, []);
-  return <section ref={sectionRef} className="py-20 md:py-28 overflow-hidden bg-primary-foreground">
-      <div className="container mx-auto px-6 md:px-[100px] my-[20px] py-[20px]">
+  return <section ref={sectionRef} className="py-20 md:py-28 overflow-hidden relative">
+      {/* Background Image with Blur */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${clientsBackground})` }}
+      />
+      <div className="absolute inset-0 backdrop-blur-md bg-primary/80" />
+      
+      <div className="container mx-auto px-6 md:px-[100px] my-[20px] py-[20px] relative z-10">
         {/* Header Row */}
         <div className={`flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-20 transition-all duration-1000 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           {/* Title with accent bar */}
@@ -42,12 +50,12 @@ const ClientsSection = () => {
             <div className="w-1.5 h-24 bg-accent rounded-full mt-1 animate-pulse" />
             <h2 className="text-4xl md:text-5xl font-bold leading-tight">
               <span className="text-accent italic">Resultados que</span><br />
-              <span className="text-secondary">geram confiança.</span>
+              <span className="text-primary-foreground">geram confiança.</span>
             </h2>
           </div>
 
           {/* Subtitle */}
-          <p className="max-w-sm lg:text-center text-secondary text-lg">
+          <p className="max-w-sm lg:text-center text-primary-foreground/80 text-lg">
             Confira quem impulsiona sua operação com a eficiência da Carflex.
           </p>
 
@@ -61,15 +69,15 @@ const ClientsSection = () => {
         <div className={`flex justify-center gap-16 mb-16 transition-all duration-1000 delay-200 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
           <div className="text-center">
             <span className="text-5xl md:text-6xl font-bold text-accent">+500</span>
-            <p className="text-secondary mt-2">Empresas Atendidas</p>
+            <p className="text-primary-foreground/80 mt-2">Empresas Atendidas</p>
           </div>
           <div className="text-center">
             <span className="text-5xl md:text-6xl font-bold text-accent">98%</span>
-            <p className="text-secondary mt-2">Satisfação</p>
+            <p className="text-primary-foreground/80 mt-2">Satisfação</p>
           </div>
           <div className="text-center">
             <span className="text-5xl md:text-6xl font-bold text-accent">15+</span>
-            <p className="text-secondary mt-2">Anos de Mercado</p>
+            <p className="text-primary-foreground/80 mt-2">Anos de Mercado</p>
           </div>
         </div>
 
