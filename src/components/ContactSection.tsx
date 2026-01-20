@@ -37,15 +37,15 @@ const ContactSection = () => {
   ];
 
   return (
-    <section id="contato" className="py-24 bg-white relative overflow-hidden">
+    <section id="contato" className="py-24 bg-gray-100 relative overflow-hidden">
       {/* Blurred fleet background */}
       <div className="absolute inset-0">
         <img 
           src={fleetBackground} 
           alt="" 
-          className="w-full h-full object-cover opacity-[0.08] blur-sm scale-110"
+          className="w-full h-full object-cover object-center opacity-20 blur-[2px] scale-110"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-white via-white/90 to-white" />
+        <div className="absolute inset-0 bg-gradient-to-b from-gray-100/80 via-gray-100/60 to-gray-100/80" />
       </div>
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
