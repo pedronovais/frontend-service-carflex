@@ -2,6 +2,7 @@ import { ArrowRight, Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroCar from "@/assets/hero-car.png";
+import badgeSticker from "@/assets/badge-sticker.png";
 
 const HeroSection = () => {
   return (
@@ -11,15 +12,18 @@ const HeroSection = () => {
       
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 text-center py-[40px] my-[20px]">
-        {/* Badge */}
+        {/* Badge Sticker */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-8"
+          initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
+          animate={{ opacity: 1, scale: 1, rotate: 0 }}
+          transition={{ duration: 0.6, type: "spring", stiffness: 200 }}
+          className="inline-block mb-8"
         >
-          <span className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-          <span className="text-sm font-medium text-accent">Locação Corporativa</span>
+          <img 
+            src={badgeSticker} 
+            alt="Locação Corporativa" 
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 object-contain drop-shadow-lg hover:scale-110 transition-transform duration-300"
+          />
         </motion.div>
 
         {/* Main Heading */}
