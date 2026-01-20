@@ -118,36 +118,54 @@ const ContactSection = () => {
                 </div>
               </div>
 
-              {/* Right - Contact Info Cards */}
+              {/* Right - Contact Info + Map */}
               <div className="space-y-4">
-                <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-                  <div className="p-3 rounded-xl bg-accent/20">
-                    <Phone className="w-6 h-6 text-accent" />
+                {/* Contact Info Cards */}
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div className="p-2 rounded-lg bg-accent/20">
+                      <Phone className="w-5 h-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/50">Telefone</p>
+                      <p className="font-semibold text-white text-sm">(31) 99999-9999</p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-sm text-white/50">Telefone</p>
-                    <p className="font-semibold text-white">(31) 99999-9999</p>
+
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div className="p-2 rounded-lg bg-accent/20">
+                      <Mail className="w-5 h-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/50">E-mail</p>
+                      <p className="font-semibold text-white text-sm">contato@carflex.com.br</p>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <div className="p-2 rounded-lg bg-accent/20">
+                      <MapPin className="w-5 h-5 text-accent" />
+                    </div>
+                    <div>
+                      <p className="text-xs text-white/50">Localização</p>
+                      <p className="font-semibold text-white text-sm">Belo Horizonte - MG</p>
+                    </div>
                   </div>
                 </div>
 
-                <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-                  <div className="p-3 rounded-xl bg-accent/20">
-                    <Mail className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/50">E-mail</p>
-                    <p className="font-semibold text-white">contato@carflex.com.br</p>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-                  <div className="p-3 rounded-xl bg-accent/20">
-                    <MapPin className="w-6 h-6 text-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-white/50">Localização</p>
-                    <p className="font-semibold text-white">Belo Horizonte - MG</p>
-                  </div>
+                {/* Map */}
+                <div className="rounded-2xl overflow-hidden border border-white/10 h-64">
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240218.40169814067!2d-44.10552842852876!3d-19.902430035862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa690cacacf2c33%3A0x5b35795e3ad23997!2sBelo%20Horizonte%2C%20MG!5e0!3m2!1spt-BR!2sbr!4v1705000000000!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Localização Carflex"
+                    className="grayscale hover:grayscale-0 transition-all duration-500"
+                  />
                 </div>
               </div>
             </div>
