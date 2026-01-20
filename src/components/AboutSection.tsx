@@ -1,114 +1,112 @@
-import { CheckCircle2 } from "lucide-react";
-import aboutBgCar from "@/assets/about-bg-car.jpg";
+import { ThumbsUp, DollarSign, Shield, Clock } from "lucide-react";
+import aboutCoupleImage from "@/assets/about-couple-car.jpg";
 
 const AboutSection = () => {
-  const highlights = [
-    "Veículos adequados à operação",
-    "Manutenção inclusa",
-    "Contratos claros e flexíveis",
-    "Suporte direto quando preciso",
+  const features = [
+    {
+      icon: ThumbsUp,
+      title: "Conforto & Performance",
+      description: "Veículos modernos e bem mantidos para garantir sua operação sem interrupções.",
+    },
+    {
+      icon: DollarSign,
+      title: "Planos Flexíveis",
+      description: "Contratos adaptados à sua realidade, sem surpresas ou taxas escondidas.",
+    },
+    {
+      icon: Shield,
+      title: "Segurança Total",
+      description: "Seguro incluso em todos os veículos para sua tranquilidade.",
+    },
+    {
+      icon: Clock,
+      title: "Suporte 24h",
+      description: "Assistência disponível a qualquer momento que você precisar.",
+    },
   ];
 
   return (
-    <section id="sobre" className="py-24 relative overflow-hidden">
-      {/* White background with blurred car image */}
-      <div className="absolute inset-0 bg-white" />
-      <div 
-        className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `url(${aboutBgCar})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          filter: 'blur(8px)',
-        }}
-      />
-      
-      <div className="container mx-auto px-4 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Left - Decorative card */}
-          <div className="relative">
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl border border-secondary/10 p-8 lg:p-12 space-y-6 shadow-xl">
-              <div className="absolute -top-6 -left-6 w-12 h-12 bg-accent rounded-lg flex items-center justify-center shadow-lg">
-                <svg viewBox="0 0 50 40" className="w-8 h-6 text-secondary">
-                  <path
-                    fill="currentColor"
-                    d="M10 5 C15 5, 20 8, 22 15 C24 22, 20 30, 12 32 C8 33, 5 31, 3 28 C1 25, 2 20, 5 17 C8 14, 12 15, 14 18 C16 21, 14 25, 11 26 C9 27, 7 25, 8 23"
-                  />
-                  <path
-                    fill="currentColor"
-                    d="M25 8 L25 32 L32 32 L32 22 L45 22 L45 16 L32 16 L32 14 L48 14 L48 8 Z"
-                  />
-                </svg>
-              </div>
+    <section id="sobre" className="py-24 bg-white relative overflow-hidden">
+      {/* Background watermark */}
+      <div className="absolute top-12 right-8 text-[120px] lg:text-[180px] font-black text-secondary/5 leading-none tracking-tighter pointer-events-none">
+        SOBRE NÓS
+      </div>
 
-              <h2 className="text-3xl lg:text-4xl font-black text-secondary">Sobre nós</h2>
-              
-              <div className="space-y-4 text-secondary/70">
-                <p>
-                  A Carflex é uma locadora de veículos criada com foco em operação, não em discurso. 
-                  Nascemos para atender empresas que dependem de frota no dia a dia e não podem 
-                  lidar com imprevistos, veículos parados ou contratos engessados.
-                </p>
-                <p>
-                  Atuamos como parceiros operacionais, assumindo a gestão da frota para que nossos 
-                  clientes tenham previsibilidade, continuidade e menos carga administrativa.
-                </p>
-                <p className="text-secondary font-medium">
-                  Mais do que fornecer carros, a Carflex estrutura a mobilidade da empresa 
-                  para que o negócio siga funcionando.
-                </p>
+      <div className="container mx-auto px-4 lg:px-8 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+          {/* Left - Image with badge */}
+          <div className="relative">
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={aboutCoupleImage}
+                alt="Casal satisfeito dentro de veículo Carflex"
+                className="w-full h-[400px] lg:h-[500px] object-cover"
+              />
+              {/* Gradient overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 via-transparent to-transparent" />
+            </div>
+
+            {/* Experience badge */}
+            <div className="absolute -top-4 right-8 lg:right-12 bg-accent text-secondary px-6 py-4 rounded-lg shadow-xl">
+              <div className="text-center">
+                <span className="text-4xl lg:text-5xl font-black block">10+</span>
+                <span className="text-sm font-semibold">Anos de<br />Experiência</span>
               </div>
             </div>
 
-            {/* Diagonal accent */}
-            <div 
-              className="absolute -bottom-8 -right-8 w-48 h-48 bg-accent/10 -z-10"
-              style={{ clipPath: "polygon(0 0, 100% 0, 100% 100%)" }}
-            />
+            {/* Decorative element */}
+            <div className="absolute -bottom-6 -left-6 w-32 h-32 bg-accent/20 rounded-full blur-2xl" />
           </div>
 
-          {/* Right - Features */}
+          {/* Right - Content */}
           <div className="space-y-8">
             <div className="space-y-4">
-              <span className="text-accent font-semibold uppercase tracking-wider text-sm bg-accent/10 px-3 py-1 rounded-full">
-                Nosso Modelo
-              </span>
-              <h3 className="text-3xl lg:text-4xl font-bold text-secondary">
-                Simples, direto e
-                <span className="text-accent"> sem surpresas</span>
-              </h3>
+              <h2 className="text-3xl lg:text-4xl xl:text-5xl font-black text-secondary leading-tight">
+                Mantendo você em movimento com{" "}
+                <span className="text-accent">locação confiável</span>
+              </h2>
+              <p className="text-secondary/70 text-lg">
+                A Carflex é uma locadora de veículos criada com foco em operação. 
+                Nascemos para atender empresas que dependem de frota no dia a dia 
+                e não podem lidar com imprevistos, veículos parados ou contratos engessados.
+              </p>
             </div>
 
-            <div className="grid sm:grid-cols-2 gap-4">
-              {highlights.map((item, index) => (
-                <div
-                  key={index}
-                  className="flex items-start gap-3 p-4 rounded-xl bg-white/80 backdrop-blur-sm border border-secondary/10 hover:border-accent/50 transition-colors group shadow-sm"
-                >
-                  <CheckCircle2 className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                  <span className="text-sm font-medium text-secondary group-hover:text-accent transition-colors">
-                    {item}
-                  </span>
+            {/* Feature cards */}
+            <div className="grid sm:grid-cols-2 gap-6">
+              {features.map((feature, index) => (
+                <div key={index} className="space-y-3">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                      <feature.icon className="w-6 h-6 text-accent" />
+                    </div>
+                    <h3 className="font-bold text-secondary">{feature.title}</h3>
+                  </div>
+                  <p className="text-sm text-secondary/60 pl-15">
+                    {feature.description}
+                  </p>
                 </div>
               ))}
             </div>
-
-            {/* Challenge section */}
-            <div className="p-6 rounded-2xl bg-secondary text-foreground space-y-4 shadow-lg">
-              <h4 className="text-xl font-bold text-accent">
-                Toda empresa que depende de veículos tem o mesmo desafio
-              </h4>
-              <ul className="space-y-2 text-sm text-foreground/70">
-                <li>• Veículo parado gera atraso.</li>
-                <li>• Atraso gera retrabalho.</li>
-                <li>• Retrabalho gera custo invisível.</li>
-              </ul>
-              <p className="text-sm text-foreground">
-                Gerir frota internamente ou com parceiros pouco estruturados transforma 
-                um ativo produtivo em um centro constante de problemas.
-              </p>
-            </div>
           </div>
+        </div>
+      </div>
+
+      {/* Marquee section */}
+      <div className="mt-20 py-6 bg-secondary overflow-hidden">
+        <div className="animate-marquee whitespace-nowrap flex items-center gap-8">
+          {[...Array(2)].map((_, i) => (
+            <div key={i} className="flex items-center gap-8 text-4xl lg:text-5xl font-black">
+              <span className="text-white/20">Confiável</span>
+              <span className="text-accent">✦</span>
+              <span className="text-white/20">Conveniente</span>
+              <span className="text-accent">✦</span>
+              <span className="text-white/20">Acessível</span>
+              <span className="text-accent">✦</span>
+              <span className="text-white/20">Profissional</span>
+              <span className="text-accent">✦</span>
+            </div>
+          ))}
         </div>
       </div>
     </section>
