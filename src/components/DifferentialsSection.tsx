@@ -63,30 +63,28 @@ const DifferentialsSection = () => {
           {/* Steps with circles */}
           <div className="grid md:grid-cols-4 gap-8 lg:gap-12 max-w-5xl mx-auto">
             {[{
-              number: "01",
-              title: "Empresas",
-              desc: "Com equipe externa ou logística que precisam de mobilidade"
-            }, {
-              number: "02",
-              title: "Negócios",
-              desc: "Que não podem ficar sem veículo em nenhum momento"
-            }, {
-              number: "03",
-              title: "Operações",
-              desc: "Que buscam previsibilidade e controle de custos"
-            }, {
-              number: "04",
-              title: "Gestores",
-              desc: "Que querem reduzir a carga administrativa da frota"
-            }].map((item, index) => (
-              <div key={index} className="flex flex-col items-center text-center">
-                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full border-2 border-accent flex items-center justify-center mb-6 transition-all duration-300 hover:bg-accent/10 hover:scale-105">
-                  <span className="text-xl lg:text-2xl font-bold text-accent">{item.number}</span>
+            number: "01",
+            title: "Empresas",
+            desc: "Com equipe externa ou logística que precisam de mobilidade"
+          }, {
+            number: "02",
+            title: "Negócios",
+            desc: "Que não podem ficar sem veículo em nenhum momento"
+          }, {
+            number: "03",
+            title: "Operações",
+            desc: "Que buscam previsibilidade e controle de custos"
+          }, {
+            number: "04",
+            title: "Gestores",
+            desc: "Que querem reduzir a carga administrativa da frota"
+          }].map((item, index) => <div key={index} className="flex flex-col items-center text-center">
+                <div className="w-20 h-20 lg:w-24 lg:h-24 rounded-full border-2 flex items-center justify-center mb-6 transition-all duration-300 hover:scale-105 border-primary-foreground bg-secondary">
+                  <span className="text-xl lg:text-2xl font-bold text-primary-foreground">{item.number}</span>
                 </div>
                 <h4 className="font-bold text-lg mb-2">{item.title}</h4>
                 <p className="text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </div>
-            ))}
+              </div>)}
           </div>
 
           {/* Bottom tagline */}
