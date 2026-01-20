@@ -16,8 +16,6 @@ const ClientsSection = () => {
     { name: "Agile", logo: agileLogo },
   ];
 
-  // Duplicar para carrossel infinito
-  const duplicatedClients = [...clients, ...clients];
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -85,31 +83,27 @@ const ClientsSection = () => {
           </div>
         </div>
 
-        {/* Infinite Carousel */}
+        {/* Logos Grid - Fixed */}
         <div 
-          className={`relative transition-all duration-1000 delay-400 ${
+          className={`transition-all duration-1000 delay-400 ${
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
-          {/* Gradient Overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#f8f6f3] to-transparent z-10" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-[#f8f6f3] to-transparent z-10" />
-          
-          {/* Carousel Track */}
-          <div className="flex animate-scroll hover:pause-animation">
-            {duplicatedClients.map((client, index) => (
+          <div className="flex flex-wrap justify-center lg:justify-between items-center gap-6 md:gap-8">
+            {clients.map((client, index) => (
               <div
                 key={index}
-                className="flex-shrink-0 mx-8 group cursor-pointer"
+                className="group cursor-pointer"
+                style={{ animationDelay: `${index * 100}ms` }}
               >
-                <div className="relative p-8 rounded-2xl bg-white/50 backdrop-blur-sm border border-transparent hover:border-accent/20 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2">
+                <div className="relative p-6 md:p-8 rounded-2xl bg-white/80 backdrop-blur-sm border border-transparent hover:border-accent/20 transition-all duration-500 hover:shadow-2xl hover:shadow-accent/10 hover:-translate-y-2">
                   {/* Glow effect on hover */}
                   <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-accent/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   
                   <img
                     src={client.logo}
                     alt={client.name}
-                    className="h-20 md:h-28 w-auto object-contain transition-all duration-500 group-hover:scale-110"
+                    className="h-16 md:h-24 w-auto object-contain transition-all duration-500 group-hover:scale-110"
                   />
                 </div>
               </div>
@@ -130,20 +124,6 @@ const ClientsSection = () => {
           <div className="w-16 h-px bg-gradient-to-r from-transparent via-accent/40 to-transparent" />
         </div>
       </div>
-
-      {/* CSS for infinite scroll animation */}
-      <style>{`
-        @keyframes scroll {
-          0% { transform: translateX(0); }
-          100% { transform: translateX(-50%); }
-        }
-        .animate-scroll {
-          animation: scroll 20s linear infinite;
-        }
-        .animate-scroll:hover {
-          animation-play-state: paused;
-        }
-      `}</style>
     </section>
   );
 };
