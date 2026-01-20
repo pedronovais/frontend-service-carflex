@@ -29,7 +29,7 @@ const HeroSection = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4"
         >
-          Frota premium para
+          Frota completa para
           <span className="block text-accent">sua operação</span>
         </motion.h1>
         
