@@ -1,48 +1,31 @@
-import { 
-  Car, 
-  RefreshCw, 
-  Droplets, 
-  Headphones, 
-  Wifi, 
-  MapPin 
-} from "lucide-react";
-
+import { Car, RefreshCw, Droplets, Headphones, Wifi, MapPin } from "lucide-react";
 const DifferentialsSection = () => {
-  const differentials = [
-    {
-      icon: Car,
-      title: "Veículos adaptados",
-      description: "Frota personalizada para sua operação",
-    },
-    {
-      icon: RefreshCw,
-      title: "Veículo reserva ilimitado",
-      description: "Nunca fique sem mobilidade",
-    },
-    {
-      icon: Droplets,
-      title: "Não cobramos lavagem simples",
-      description: "Economia nos detalhes",
-    },
-    {
-      icon: Headphones,
-      title: "Atendimento personalizado",
-      description: "Suporte dedicado à sua empresa",
-    },
-    {
-      icon: Wifi,
-      title: "Não cobramos condutor adicional",
-      description: "Flexibilidade para sua equipe",
-    },
-    {
-      icon: MapPin,
-      title: "Entregamos e recolhemos",
-      description: "Sem nenhum custo na região",
-    },
-  ];
-
-  return (
-    <section id="diferenciais" className="py-24 bg-background relative overflow-hidden">
+  const differentials = [{
+    icon: Car,
+    title: "Veículos adaptados",
+    description: "Frota personalizada para sua operação"
+  }, {
+    icon: RefreshCw,
+    title: "Veículo reserva ilimitado",
+    description: "Nunca fique sem mobilidade"
+  }, {
+    icon: Droplets,
+    title: "Não cobramos lavagem simples",
+    description: "Economia nos detalhes"
+  }, {
+    icon: Headphones,
+    title: "Atendimento personalizado",
+    description: "Suporte dedicado à sua empresa"
+  }, {
+    icon: Wifi,
+    title: "Não cobramos condutor adicional",
+    description: "Flexibilidade para sua equipe"
+  }, {
+    icon: MapPin,
+    title: "Entregamos e recolhemos",
+    description: "Sem nenhum custo na região"
+  }];
+  return <section id="diferenciais" className="py-24 relative overflow-hidden bg-secondary">
       {/* Decorative elements */}
       <div className="absolute top-1/2 left-0 w-64 h-64 bg-accent/5 rounded-full blur-3xl -translate-y-1/2" />
       <div className="absolute top-1/2 right-0 w-64 h-64 bg-primary/10 rounded-full blur-3xl -translate-y-1/2" />
@@ -56,11 +39,7 @@ const DifferentialsSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {differentials.map((item, index) => (
-            <div
-              key={index}
-              className="group p-6 rounded-2xl carflex-card hover:border-accent/50 transition-all duration-300 hover:-translate-y-1"
-            >
+          {differentials.map((item, index) => <div key={index} className="group p-6 rounded-2xl carflex-card hover:border-accent/50 transition-all duration-300 hover:-translate-y-1">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-accent/10 group-hover:bg-accent/20 transition-colors flex-shrink-0">
                   <item.icon className="w-6 h-6 text-accent" />
@@ -70,8 +49,7 @@ const DifferentialsSection = () => {
                   <p className="text-sm text-muted-foreground">{item.description}</p>
                 </div>
               </div>
-            </div>
-          ))}
+            </div>)}
         </div>
 
         {/* Process Timeline - Zigzag Style */}
@@ -88,13 +66,23 @@ const DifferentialsSection = () => {
             <div className="hidden lg:block absolute top-1/2 left-0 right-0 h-0.5 border-t-2 border-dashed border-accent/30 -translate-y-1/2" />
             
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-4">
-              {[
-                { icon: "🏢", title: "Empresas", desc: "Com equipe externa ou logística" },
-                { icon: "🚗", title: "Negócios", desc: "Que não podem ficar sem veículo" },
-                { icon: "📊", title: "Operações", desc: "Que buscam previsibilidade de custo" },
-                { icon: "📋", title: "Gestores", desc: "Que querem reduzir carga administrativa" },
-              ].map((item, index) => (
-                <div key={index} className={`flex flex-col items-center ${index % 2 === 1 ? 'lg:mt-16' : 'lg:-mt-4'}`}>
+              {[{
+              icon: "🏢",
+              title: "Empresas",
+              desc: "Com equipe externa ou logística"
+            }, {
+              icon: "🚗",
+              title: "Negócios",
+              desc: "Que não podem ficar sem veículo"
+            }, {
+              icon: "📊",
+              title: "Operações",
+              desc: "Que buscam previsibilidade de custo"
+            }, {
+              icon: "📋",
+              title: "Gestores",
+              desc: "Que querem reduzir carga administrativa"
+            }].map((item, index) => <div key={index} className={`flex flex-col items-center ${index % 2 === 1 ? 'lg:mt-16' : 'lg:-mt-4'}`}>
                   <div className="relative">
                     <div className="w-16 h-16 rounded-full bg-accent/20 flex items-center justify-center text-2xl border-2 border-accent/50 shadow-lg shadow-accent/20">
                       {item.icon}
@@ -107,8 +95,7 @@ const DifferentialsSection = () => {
                     <h4 className="font-bold text-lg">{item.title}</h4>
                     <p className="text-sm text-muted-foreground mt-1">{item.desc}</p>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </div>
 
@@ -142,8 +129,6 @@ const DifferentialsSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default DifferentialsSection;
