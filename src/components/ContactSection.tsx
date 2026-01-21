@@ -148,9 +148,9 @@ const ContactSection = () => {
                       <div className="p-2 rounded-lg bg-accent/20">
                         <item.icon className="w-5 h-5 text-accent" />
                       </div>
-                      <div>
+                      <div className="min-w-0 flex-1">
                         <p className="text-xs text-white/50">{item.label}</p>
-                        <p className="font-semibold text-white text-sm">{item.value}</p>
+                        <p className="font-semibold text-white text-sm break-all">{item.value}</p>
                       </div>
                     </motion.div>
                   ))}
