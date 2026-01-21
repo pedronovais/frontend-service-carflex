@@ -18,7 +18,7 @@ const Footer = () => {
               Soluções em frota corporativa com foco em continuidade e previsibilidade.
             </p>
             <div className="flex gap-3 sm:gap-4">
-              <a href="#" className="p-1.5 sm:p-2 rounded-lg bg-secondary hover:bg-accent/20 transition-colors">
+              <a href="https://instagram.com/carflexlocadora" target="_blank" rel="noopener noreferrer" className="p-1.5 sm:p-2 rounded-lg bg-secondary hover:bg-accent/20 transition-colors">
                 <Instagram className="w-4 h-4 sm:w-5 sm:h-5 text-muted-foreground hover:text-accent" />
               </a>
               <a href="#" className="p-1.5 sm:p-2 rounded-lg bg-secondary hover:bg-accent/20 transition-colors">
@@ -51,8 +51,8 @@ const Footer = () => {
           <div className="space-y-3 sm:space-y-4">
             <h4 className="font-bold text-sm sm:text-base text-foreground">Contato</h4>
             <ul className="space-y-1.5 sm:space-y-2 text-xs sm:text-sm text-muted-foreground">
-              <li>(31) 99999-9999</li>
-              <li className="break-all">contato@carflex.com.br</li>
+              <li><a href="https://wa.me/5531984503693" target="_blank" rel="noopener noreferrer" className="hover:text-accent transition-colors">(31) 98450-3693</a></li>
+              <li className="break-all"><a href="mailto:administrativo@carflexlocadora.com.br" className="hover:text-accent transition-colors">administrativo@carflexlocadora.com.br</a></li>
               <li>Belo Horizonte - MG</li>
             </ul>
           </div>
