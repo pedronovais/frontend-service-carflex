@@ -92,7 +92,7 @@ const HeroSection = () => {
             </div>
           </div>
           <div className="text-left">
-            <p className="text-sm font-semibold">500+ Clientes</p>
+            <p className="text-sm font-semibold">100+ Veículos</p>
             <div className="flex items-center gap-1">
               {[1, 2, 3, 4, 5].map(i => <Star key={i} className="w-3 h-3 fill-accent text-accent" />)}
             </div>
