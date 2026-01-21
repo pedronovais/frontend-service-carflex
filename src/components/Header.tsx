@@ -59,7 +59,7 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" size="sm" className="gap-2 border-accent text-accent hover:bg-accent hover:text-foreground">
+            <Button variant="outline" size="sm" className="gap-2 border-foreground text-foreground hover:bg-foreground hover:text-background">
               <Phone className="w-4 h-4" />
               Fale Conosco
             </Button>
