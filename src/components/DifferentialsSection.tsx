@@ -76,27 +76,37 @@ const DifferentialsSection = () => {
             </h3>
           </motion.div>
 
-          {/* Steps with circles */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 lg:gap-12 max-w-5xl mx-auto">
-            {steps.map((item, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
-                className="flex flex-col items-center text-center"
-              >
+          {/* Steps with circles - Mobile timeline */}
+          <div className="relative">
+            {/* Vertical timeline line - mobile only */}
+            <div className="md:hidden absolute left-[27px] sm:left-[31px] top-8 bottom-8 w-0.5 bg-gradient-to-b from-accent via-accent/50 to-accent" />
+            
+            <div className="flex flex-col md:grid md:grid-cols-4 gap-6 sm:gap-8 md:gap-6 lg:gap-12 max-w-5xl mx-auto">
+              {steps.map((item, index) => (
                 <motion.div
-                  whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
-                  className="w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 flex items-center justify-center mb-3 sm:mb-4 md:mb-6 transition-all duration-300 border-primary-foreground bg-secondary"
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className="flex md:flex-col items-center md:items-center text-left md:text-center gap-4 md:gap-0 relative"
                 >
-                  <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-foreground">{item.number}</span>
+                  {/* Animated pulse on timeline - mobile only */}
+                  <div className="md:hidden absolute left-[23px] sm:left-[27px] top-1/2 -translate-y-1/2 w-2.5 h-2.5 rounded-full bg-accent animate-pulse z-10" />
+                  
+                  <motion.div
+                    whileHover={{ scale: 1.1, transition: { duration: 0.2 } }}
+                    className="relative z-20 w-14 h-14 sm:w-16 sm:h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 rounded-full border-2 flex items-center justify-center md:mb-6 transition-all duration-300 border-primary-foreground bg-secondary flex-shrink-0"
+                  >
+                    <span className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-primary-foreground">{item.number}</span>
+                  </motion.div>
+                  <div className="flex-1 md:flex-none">
+                    <h4 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">{item.title}</h4>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
+                  </div>
                 </motion.div>
-                <h4 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">{item.title}</h4>
-                <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{item.desc}</p>
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
 
           {/* Bottom tagline */}
