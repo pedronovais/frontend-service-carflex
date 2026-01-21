@@ -68,7 +68,7 @@ const PrinciplesSection = () => {
           </motion.div>
 
           {/* Right side - Benefits cards grid */}
-          <div className="grid grid-cols-2 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
             {benefits.map((benefit, index) => (
               <motion.div
                 key={index}
