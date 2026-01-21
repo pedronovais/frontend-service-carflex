@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import heroCar from "@/assets/hero-car.png";
 const HeroSection = () => {
-  return <section id="inicio" className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-secondary pt-20">
+  return <section id="inicio" className="relative min-h-screen flex flex-col items-center justify-center overflow-x-hidden overflow-y-visible bg-secondary pt-20 pb-20">
       {/* Subtle gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-secondary via-secondary to-secondary/95" />
       
@@ -123,9 +123,9 @@ const HeroSection = () => {
       </div>
 
       {/* Bottom curve transition */}
-      <div className="absolute bottom-0 left-0 right-0">
-        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full">
-          <path d="M0 80H1440V40C1440 40 1140 0 720 0C300 0 0 40 0 40V80Z" fill="white" />
+      <div className="absolute bottom-0 left-0 right-0 z-20 pointer-events-none w-full">
+        <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-full h-[80px] block" preserveAspectRatio="none">
+          <path d="M0 80V70C0 70 360 50 720 50C1080 50 1440 70 1440 70V80H0Z" fill="white" />
         </svg>
       </div>
     </section>;
