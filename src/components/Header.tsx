@@ -59,10 +59,12 @@ const Header = () => {
 
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
-            <Button variant="outline" size="sm" className="gap-2 border-border/50 bg-background/30 backdrop-blur-sm text-foreground hover:bg-background/50 hover:border-foreground/50">
-              <Phone className="w-4 h-4" />
-              Fale Conosco
-            </Button>
+            <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
+              <Button variant="outline" size="sm" className="gap-2 border-border/50 bg-background/30 backdrop-blur-sm text-foreground hover:bg-background/50 hover:border-foreground/50">
+                <Phone className="w-4 h-4" />
+                Fale Conosco
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Toggle */}
@@ -89,10 +91,12 @@ const Header = () => {
                 {link.label}
               </a>
             ))}
-            <Button className="mt-4 gap-2 bg-accent hover:bg-accent/90">
-              <Phone className="w-4 h-4" />
-              Fale Conosco
-            </Button>
+            <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="mt-4 block">
+              <Button className="w-full gap-2 bg-accent hover:bg-accent/90">
+                <Phone className="w-4 h-4" />
+                Fale Conosco
+              </Button>
+            </a>
           </nav>
         </div>
       )}

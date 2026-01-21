@@ -103,7 +103,7 @@ const ContactSection = () => {
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
-                    <a href="https://wa.me/5531984503693" target="_blank" rel="noopener noreferrer">
+                    <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
                       <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-semibold rounded-full w-full sm:w-auto">
                         <MessageCircle className="w-5 h-5" />
                         Falar no WhatsApp
@@ -111,7 +111,7 @@ const ContactSection = () => {
                     </a>
                   </motion.div>
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
-                    <a href="tel:+5531984503693">
+                    <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
                       <Button size="lg" variant="outline" className="gap-2 border-white/20 text-white hover:bg-white/10 rounded-full w-full sm:w-auto">
                         <Phone className="w-5 h-5" />
                         Ligar Agora

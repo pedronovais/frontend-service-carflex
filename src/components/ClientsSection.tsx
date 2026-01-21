@@ -43,9 +43,11 @@ const ClientsSection = () => {
           </p>
 
           <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-            <Button className="bg-accent hover:bg-accent/90 text-white px-6 sm:px-10 py-5 sm:py-7 text-sm font-semibold tracking-wide w-full sm:w-fit transition-all duration-300 hover:shadow-xl hover:shadow-accent/20">
-              CONHEÇA NOSSOS CASES
-            </Button>
+            <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="w-full sm:w-fit block">
+              <Button className="bg-accent hover:bg-accent/90 text-white px-6 sm:px-10 py-5 sm:py-7 text-sm font-semibold tracking-wide w-full sm:w-fit transition-all duration-300 hover:shadow-xl hover:shadow-accent/20">
+                CONHEÇA NOSSA FROTA
+              </Button>
+            </a>
           </motion.div>
         </motion.div>
 
@@ -90,10 +92,10 @@ const ClientsSection = () => {
                 whileHover={{ y: -8, scale: 1.1, transition: { duration: 0.3 } }}
                 className="group cursor-pointer flex items-center justify-center w-full"
               >
-                <img 
-                  src={client.logo} 
-                  alt={client.name} 
-                  className="h-28 sm:h-24 md:h-28 lg:h-36 w-auto max-w-[200px] sm:max-w-[220px] object-contain transition-all duration-500" 
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="h-28 sm:h-24 md:h-28 lg:h-36 w-auto max-w-[200px] sm:max-w-[220px] object-contain transition-all duration-500"
                 />
               </motion.div>
             ))}

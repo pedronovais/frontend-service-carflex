@@ -114,10 +114,12 @@ const FleetSection = () => {
         >
           <div className="inline-flex flex-col sm:flex-row items-center gap-3 sm:gap-4 bg-secondary/5 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-secondary/10">
             <p className="text-secondary/70 text-sm sm:text-base">Precisa de outra categoria de veículo?</p>
-            <Button className="gap-2 bg-accent hover:bg-accent/90 font-semibold shadow-lg shadow-accent/25 w-full sm:w-auto">
-              Fale Conosco
-              <ArrowRight className="w-4 h-4" />
-            </Button>
+            <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+              <Button className="gap-2 bg-accent hover:bg-accent/90 font-semibold shadow-lg shadow-accent/25 w-full sm:w-auto">
+                Fale Conosco
+                <ArrowRight className="w-4 h-4" />
+              </Button>
+            </a>
           </div>
         </motion.div>
       </div>

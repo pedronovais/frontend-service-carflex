@@ -63,13 +63,17 @@ const HeroSection = () => {
         duration: 0.6,
         delay: 0.3
       }} className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-10 px-2">
-          <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-semibold px-6 sm:px-8 rounded-full w-full sm:w-auto">
-            Solicitar Orçamento
-            <ArrowRight className="w-5 h-5" />
-          </Button>
-          <Button size="lg" variant="outline" className="border-border hover:bg-secondary/80 rounded-full px-6 sm:px-8 w-full sm:w-auto">
-            Ver Frota
-          </Button>
+          <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-semibold px-6 sm:px-8 rounded-full w-full sm:w-auto">
+              Solicitar Orçamento
+              <ArrowRight className="w-5 h-5" />
+            </Button>
+          </a>
+          <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="w-full sm:w-auto">
+            <Button size="lg" variant="outline" className="border-border hover:bg-secondary/80 rounded-full px-6 sm:px-8 w-full sm:w-auto">
+              Ver Frota
+            </Button>
+          </a>
         </motion.div>
 
         {/* Social Proof */}

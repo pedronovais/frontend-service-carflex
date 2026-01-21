@@ -59,10 +59,12 @@ const PrinciplesSection = () => {
                 <p className="text-white/80 text-sm md:text-base mb-4 max-w-sm">
                   Do primeiro contato à entrega do veículo, acompanhamos cada etapa.
                 </p>
-                <Button className="gap-2 bg-white hover:bg-white/90 text-secondary font-semibold rounded-full">
-                  Solicitar Orçamento
-                  <ArrowRight className="w-4 h-4" />
-                </Button>
+                <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
+                  <Button className="gap-2 bg-white hover:bg-white/90 text-secondary font-semibold rounded-full">
+                    Solicitar Orçamento
+                    <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </a>
               </motion.div>
             </div>
           </motion.div>
