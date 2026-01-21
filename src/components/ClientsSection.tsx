@@ -14,9 +14,9 @@ const ClientsSection = () => {
   ];
 
   const stats = [
-    { value: "+500", label: "Empresas Atendidas" },
-    { value: "98%", label: "Satisfação" },
-    { value: "15+", label: "Anos de Mercado" },
+    { value: "+100", label: "Veículos na Frota" },
+    { value: "100%", label: "Satisfação" },
+    { value: "24h", label: "Suporte Disponível" },
   ];
 
   return (
