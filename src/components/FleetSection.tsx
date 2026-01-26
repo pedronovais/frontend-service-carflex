@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import fleetEconomico from "@/assets/fleet-economico.png";
 import fleetIntermediario from "@/assets/fleet-intermediario.png";
 import fleetUtilitarios from "@/assets/fleet-utilitarios.png";
@@ -91,10 +92,16 @@ const FleetSection = () => {
                   <p className="text-[10px] sm:text-xs text-secondary/50 leading-relaxed min-h-[2rem] sm:min-h-[2.5rem] hidden sm:block">{category.description}</p>
                 </div>
 
-                <div className="mt-2 sm:mt-4 hidden sm:flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                  <span className="text-xs text-accent font-semibold flex items-center gap-1">
-                    Ver modelos <ArrowRight className="w-3 h-3" />
-                  </span>
+                <div className="mt-2 sm:mt-4 flex items-center justify-center">
+                  <Link to={`/orcamento?categoria=${encodeURIComponent(category.name)}`} className="w-full">
+                    <Button 
+                      size="sm" 
+                      className="w-full bg-accent hover:bg-accent/90 text-white font-semibold text-xs sm:text-sm gap-1 shadow-md shadow-accent/20"
+                    >
+                      Solicitar Orçamento
+                      <ArrowRight className="w-3 h-3" />
+                    </Button>
+                  </Link>
                 </div>
               </motion.div>
             </motion.div>
