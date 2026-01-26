@@ -21,23 +21,22 @@ import fleetMoto from "@/assets/fleet-moto.png";
 
 const Orcamento = () => {
   const [searchParams] = useSearchParams();
-  const categoria = searchParams.get("categoria") || "Econômico";
+  const categoriaParam = searchParams.get("categoria");
   const { toast } = useToast();
 
-  // Vehicle data mapping
-  const veiculosData: Record<string, { image: string; name: string; description: string }> = {
-    "Econômico": { image: fleetEconomico, name: "Econômico", description: "Compacto ideal para mobilidade urbana" },
-    "Intermediário": { image: fleetIntermediario, name: "Intermediário", description: "Confortável e eficiente para deslocamentos" },
-    "Utilitários": { image: fleetUtilitarios, name: "Utilitários", description: "SUV robusto para cargas e diferentes terrenos" },
-    "Hatch": { image: fleetHatch, name: "Hatch", description: "Versatilidade e praticidade para o dia a dia" },
-    "Motos": { image: fleetMoto, name: "Motos", description: "Agilidade para entregas e deslocamentos rápidos" },
-  };
+  // Vehicle data list
+  const veiculosList = [
+    { id: "Econômico", image: fleetEconomico, name: "Econômico", description: "Compacto ideal para mobilidade urbana" },
+    { id: "Intermediário", image: fleetIntermediario, name: "Intermediário", description: "Confortável e eficiente para deslocamentos" },
+    { id: "Utilitários", image: fleetUtilitarios, name: "Utilitários", description: "SUV robusto para cargas e diferentes terrenos" },
+    { id: "Hatch", image: fleetHatch, name: "Hatch", description: "Versatilidade e praticidade para o dia a dia" },
+    { id: "Motos", image: fleetMoto, name: "Motos", description: "Agilidade para entregas e deslocamentos rápidos" },
+  ];
 
-  const veiculoSelecionado = veiculosData[categoria] || veiculosData["Econômico"];
+  const [selectedVeiculo, setSelectedVeiculo] = useState(categoriaParam || "");
 
   const [formData, setFormData] = useState({
     perfil: "",
-    grupoVeiculo: categoria,
     nomeEmpresa: "",
     cnpj: "",
     nome: "",
@@ -82,6 +81,15 @@ const Orcamento = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
+    if (!selectedVeiculo) {
+      toast({
+        title: "Selecione um veículo",
+        description: "Por favor, selecione uma categoria de veículo.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     if (parseInt(captchaAnswer) !== captcha.num1 + captcha.num2) {
       toast({
         title: "Erro no captcha",
@@ -94,7 +102,7 @@ const Orcamento = () => {
     // Build WhatsApp message
     const message = `*PEDIDO DE ORÇAMENTO*%0A%0A` +
       `*Tipo de Locação:* ${formData.perfil}%0A` +
-      `*Grupo de Veículos:* ${categoria}%0A%0A` +
+      `*Grupo de Veículos:* ${selectedVeiculo}%0A%0A` +
       `*DADOS DA EMPRESA*%0A` +
       `Nome da Empresa: ${formData.nomeEmpresa}%0A` +
       `CNPJ: ${formData.cnpj}%0A` +
@@ -159,7 +167,7 @@ const Orcamento = () => {
             {" > "}
             <Link to="/#frota" className="hover:text-accent transition-colors">Nossa Frota</Link>
             {" > "}
-            <span className="text-accent font-medium">Solicitar Orçamento - {categoria}</span>
+            <span className="text-accent font-medium">Orçamento</span>
           </p>
         </div>
       </div>
@@ -172,51 +180,193 @@ const Orcamento = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <form onSubmit={handleSubmit} className="max-w-5xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-                {/* Left Column - Vehicle Display & Location Data */}
+            <form onSubmit={handleSubmit} className="max-w-6xl mx-auto">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-10">
+                {/* Left Column - Vehicle Selection */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 sm:gap-3 mb-4">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                      <Car className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                    </div>
+                    <h2 className="text-base sm:text-lg font-bold text-foreground">SELECIONE O VEÍCULO</h2>
+                  </div>
+
+                  {/* Vehicle Grid */}
+                  <div className="space-y-3 sm:space-y-4">
+                    {veiculosList.map((veiculo, index) => (
+                      <motion.div
+                        key={veiculo.id}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ duration: 0.3, delay: index * 0.1 }}
+                        onClick={() => setSelectedVeiculo(veiculo.id)}
+                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-300 ${
+                          selectedVeiculo === veiculo.id
+                            ? "border-accent bg-accent/10 shadow-lg shadow-accent/20"
+                            : "border-border/30 bg-secondary/30 hover:border-accent/50 hover:bg-secondary/50"
+                        }`}
+                      >
+                        <div className="flex items-center gap-3 sm:gap-4">
+                          {/* Vehicle Image */}
+                          <div className="w-24 h-16 sm:w-32 sm:h-20 bg-foreground/5 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+                            <img 
+                              src={veiculo.image} 
+                              alt={veiculo.name}
+                              className="w-full h-full object-contain"
+                            />
+                          </div>
+
+                          {/* Vehicle Info */}
+                          <div className="flex-1 min-w-0">
+                            <h3 className={`font-bold text-sm sm:text-base transition-colors ${
+                              selectedVeiculo === veiculo.id ? "text-accent" : "text-foreground"
+                            }`}>
+                              {veiculo.name}
+                            </h3>
+                            <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2">{veiculo.description}</p>
+                          </div>
+
+                          {/* Selection Indicator */}
+                          <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
+                            selectedVeiculo === veiculo.id
+                              ? "border-accent bg-accent"
+                              : "border-muted-foreground/30"
+                          }`}>
+                            {selectedVeiculo === veiculo.id && (
+                              <Check className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
+                            )}
+                          </div>
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+
+                  <p className="text-[10px] sm:text-xs text-muted-foreground/60 italic text-center mt-2">*Imagens ilustrativas</p>
+                </div>
+
+                {/* Right Column - Form */}
                 <div className="space-y-4 sm:space-y-6">
-                  {/* Vehicle Card */}
+                  {/* Tipo de Locação */}
                   <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
                     <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <Car className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                       </div>
-                      <h2 className="text-base sm:text-lg font-bold text-foreground">VEÍCULO SELECIONADO</h2>
+                      <h2 className="text-base sm:text-lg font-bold text-foreground">TIPO DE LOCAÇÃO</h2>
                     </div>
 
-                    {/* Vehicle Image */}
-                    <div className="bg-foreground/5 rounded-lg sm:rounded-xl p-3 sm:p-4 mb-3 sm:mb-4">
-                      <img 
-                        src={veiculoSelecionado.image} 
-                        alt={veiculoSelecionado.name}
-                        className="w-full h-36 sm:h-48 object-contain"
-                      />
+                    <p className="text-xs sm:text-sm text-accent font-medium mb-3 sm:mb-4 bg-accent/10 p-2.5 sm:p-3 rounded-lg">
+                      *Nossas locações para Pessoa Física (PF) estão temporariamente suspensas.
+                    </p>
+
+                    <div className="space-y-3 sm:space-y-4">
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Selecione um perfil</Label>
+                        <Select value={formData.perfil} onValueChange={(v) => setFormData({...formData, perfil: v})}>
+                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                            <SelectValue placeholder="Selecione um perfil" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="pj">Pessoa Jurídica (PJ)</SelectItem>
+                            <SelectItem value="mei">MEI</SelectItem>
+                            <SelectItem value="autonomo">Autônomo com CNPJ</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
+
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Grupo de veículos escolhido</Label>
+                        <Select value={selectedVeiculo} onValueChange={setSelectedVeiculo}>
+                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                            <SelectValue placeholder="Selecione uma categoria" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            {veiculosList.map((v) => (
+                              <SelectItem key={v.id} value={v.id}>{v.name}</SelectItem>
+                            ))}
+                          </SelectContent>
+                        </Select>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Seus Dados */}
+                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
+                    <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
+                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                        <User className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
+                      </div>
+                      <h2 className="text-base sm:text-lg font-bold text-foreground">SEUS DADOS</h2>
                     </div>
 
-                    {/* Vehicle Info */}
-                    <div className="text-center space-y-1 sm:space-y-2">
-                      <h3 className="text-xl sm:text-2xl font-black text-accent">{veiculoSelecionado.name.toUpperCase()}</h3>
-                      <p className="text-muted-foreground text-xs sm:text-sm">{veiculoSelecionado.description}</p>
-                      <p className="text-[10px] sm:text-xs text-muted-foreground/60 italic">*Imagem ilustrativa</p>
-                    </div>
+                    <div className="space-y-3 sm:space-y-4">
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Nome da empresa</Label>
+                        <Input 
+                          value={formData.nomeEmpresa}
+                          onChange={(e) => setFormData({...formData, nomeEmpresa: e.target.value})}
+                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          required
+                        />
+                      </div>
 
-                    {/* Profile Selection */}
-                    <div className="mt-4 sm:mt-6 pt-3 sm:pt-4 border-t border-border/30">
-                      <p className="text-xs sm:text-sm text-accent font-medium mb-3 sm:mb-4 bg-accent/10 p-2.5 sm:p-3 rounded-lg">
-                        *Nossas locações para Pessoa Física (PF) estão temporariamente suspensas.
-                      </p>
-                      <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Selecione um perfil</Label>
-                      <Select value={formData.perfil} onValueChange={(v) => setFormData({...formData, perfil: v})}>
-                        <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
-                          <SelectValue placeholder="Selecione um perfil" />
-                        </SelectTrigger>
-                        <SelectContent>
-                          <SelectItem value="pj">Pessoa Jurídica (PJ)</SelectItem>
-                          <SelectItem value="mei">MEI</SelectItem>
-                          <SelectItem value="autonomo">Autônomo com CNPJ</SelectItem>
-                        </SelectContent>
-                      </Select>
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CNPJ</Label>
+                        <Input 
+                          value={formData.cnpj}
+                          onChange={(e) => setFormData({...formData, cnpj: e.target.value})}
+                          placeholder="00.000.000/0000-00"
+                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Seu nome</Label>
+                        <Input 
+                          value={formData.nome}
+                          onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">E-Mail</Label>
+                        <Input 
+                          type="email"
+                          value={formData.email}
+                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Celular</Label>
+                        <Input 
+                          value={formData.celular}
+                          onChange={(e) => setFormData({...formData, celular: e.target.value})}
+                          placeholder="(00) 00000-0000"
+                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
+                          required
+                        />
+                      </div>
+
+                      <div>
+                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Como nos encontrou?</Label>
+                        <Select value={formData.comoNosEncontrou} onValueChange={(v) => setFormData({...formData, comoNosEncontrou: v})}>
+                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                            <SelectValue placeholder="Selecione" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="google">Google</SelectItem>
+                            <SelectItem value="instagram">Instagram</SelectItem>
+                            <SelectItem value="indicacao">Indicação</SelectItem>
+                            <SelectItem value="outro">Outro</SelectItem>
+                          </SelectContent>
+                        </Select>
+                      </div>
                     </div>
                   </div>
 
@@ -323,88 +473,6 @@ const Orcamento = () => {
                             </div>
                           ))}
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Right Column - User Data */}
-                <div className="space-y-4 sm:space-y-6">
-                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
-                    <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
-                      <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
-                        <User className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
-                      </div>
-                      <h2 className="text-base sm:text-lg font-bold text-foreground">SEUS DADOS</h2>
-                    </div>
-
-                    <div className="space-y-3 sm:space-y-4">
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Nome da empresa</Label>
-                        <Input 
-                          value={formData.nomeEmpresa}
-                          onChange={(e) => setFormData({...formData, nomeEmpresa: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CNPJ</Label>
-                        <Input 
-                          value={formData.cnpj}
-                          onChange={(e) => setFormData({...formData, cnpj: e.target.value})}
-                          placeholder="00.000.000/0000-00"
-                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Seu nome</Label>
-                        <Input 
-                          value={formData.nome}
-                          onChange={(e) => setFormData({...formData, nome: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">E-Mail</Label>
-                        <Input 
-                          type="email"
-                          value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Celular</Label>
-                        <Input 
-                          value={formData.celular}
-                          onChange={(e) => setFormData({...formData, celular: e.target.value})}
-                          placeholder="(00) 00000-0000"
-                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
-                          required
-                        />
-                      </div>
-
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Como nos encontrou?</Label>
-                        <Select value={formData.comoNosEncontrou} onValueChange={(v) => setFormData({...formData, comoNosEncontrou: v})}>
-                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
-                            <SelectValue placeholder="Selecione" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="google">Google</SelectItem>
-                            <SelectItem value="instagram">Instagram</SelectItem>
-                            <SelectItem value="indicacao">Indicação</SelectItem>
-                            <SelectItem value="outro">Outro</SelectItem>
-                          </SelectContent>
-                        </Select>
                       </div>
                     </div>
                   </div>
