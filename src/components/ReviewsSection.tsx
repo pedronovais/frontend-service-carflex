@@ -118,31 +118,90 @@ const ReviewsSection = () => {
         </div>
       </section>
 
-      {/* Stats Section - Blue background */}
-      <section className="py-12 md:py-16 bg-secondary">
-        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-[100px]">
+      {/* Stats Section - Modern Blue background with grid */}
+      <section className="py-16 md:py-24 bg-secondary relative overflow-hidden">
+        {/* Grid background pattern */}
+        <div className="absolute inset-0 opacity-20">
+          <div 
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `
+                linear-gradient(rgba(59, 130, 246, 0.3) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(59, 130, 246, 0.3) 1px, transparent 1px)
+              `,
+              backgroundSize: '60px 60px',
+            }}
+          />
+        </div>
+
+        {/* Decorative plus signs */}
+        <div className="absolute top-8 left-[10%] text-accent/30 text-2xl font-light">+</div>
+        <div className="absolute top-12 right-[15%] text-accent/20 text-xl font-light">+</div>
+        <div className="absolute bottom-10 left-[20%] text-accent/25 text-lg font-light">+</div>
+        <div className="absolute bottom-8 right-[10%] text-accent/30 text-2xl font-light">+</div>
+        <div className="absolute top-1/2 left-[5%] text-accent/15 text-xl font-light">+</div>
+        <div className="absolute top-1/3 right-[5%] text-accent/20 text-lg font-light">+</div>
+
+        <div className="container mx-auto px-4 sm:px-6 md:px-8 lg:px-[100px] relative z-10">
+          {/* Title */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="flex flex-wrap justify-center gap-8 md:gap-16"
+            className="text-center mb-12 md:mb-16"
           >
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-1 mb-1">
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="w-5 h-5 fill-accent text-accent" />
-                ))}
-              </div>
-              <p className="text-white/60 text-sm">Nota média 5.0</p>
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white">
+              Dados que <span className="text-accent">garantem</span> nossa capacidade de
+              <br className="hidden sm:block" />
+              <span className="sm:hidden"> </span>prover soluções de alta confiabilidade
+            </h3>
+          </motion.div>
+
+          {/* Stats with dividers */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-0"
+          >
+            {/* Stat 1 */}
+            <div className="text-center px-8 md:px-12 lg:px-16">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
+                +100
+              </span>
+              <p className="text-white/60 text-sm md:text-base mt-2">
+                Veículos na<br />Frota
+              </p>
             </div>
-            <div className="text-center">
-              <span className="text-3xl md:text-4xl font-bold text-accent">100%</span>
-              <p className="text-white/60 text-sm">Clientes satisfeitos</p>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-accent/50 to-transparent" />
+            <div className="md:hidden w-32 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+
+            {/* Stat 2 */}
+            <div className="text-center px-8 md:px-12 lg:px-16">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
+                +50
+              </span>
+              <p className="text-white/60 text-sm md:text-base mt-2">
+                Empresas<br />Atendidas
+              </p>
             </div>
-            <div className="text-center">
-              <span className="text-3xl md:text-4xl font-bold text-accent">+50</span>
-              <p className="text-white/60 text-sm">Avaliações positivas</p>
+
+            {/* Divider */}
+            <div className="hidden md:block w-px h-24 bg-gradient-to-b from-transparent via-accent/50 to-transparent" />
+            <div className="md:hidden w-32 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+
+            {/* Stat 3 */}
+            <div className="text-center px-8 md:px-12 lg:px-16">
+              <span className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold text-white tracking-tight">
+                100%
+              </span>
+              <p className="text-white/60 text-sm md:text-base mt-2">
+                Satisfação<br />Garantida
+              </p>
             </div>
           </motion.div>
         </div>
