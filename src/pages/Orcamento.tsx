@@ -18,6 +18,7 @@ import fleetIntermediario from "@/assets/fleet-intermediario.png";
 import fleetUtilitarios from "@/assets/fleet-utilitarios.png";
 import fleetHatch from "@/assets/fleet-hatch.png";
 import fleetMoto from "@/assets/fleet-moto.png";
+import orcamentoBg from "@/assets/orcamento-bg.png";
 
 const Orcamento = () => {
   const [searchParams] = useSearchParams();
@@ -173,8 +174,21 @@ const Orcamento = () => {
       </div>
 
       {/* Main Content */}
-      <main className="flex-1 bg-background">
-        <div className="container mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 md:py-12">
+      <main className="flex-1 relative overflow-hidden" style={{ backgroundColor: '#f8f9fa' }}>
+        {/* Blurred background image */}
+        <div 
+          className="absolute inset-0 opacity-30"
+          style={{
+            backgroundImage: `url(${orcamentoBg})`,
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            filter: 'blur(8px)',
+          }}
+        />
+        {/* White overlay for contrast */}
+        <div className="absolute inset-0 bg-white/70" />
+        
+        <div className="container mx-auto px-3 sm:px-4 lg:px-8 py-6 sm:py-8 md:py-12 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -185,10 +199,10 @@ const Orcamento = () => {
                 {/* Left Column - Vehicle Selection */}
                 <div className="space-y-4">
                   <div className="flex items-center gap-2 sm:gap-3 mb-4">
-                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
+                    <div className="w-8 h-8 sm:w-10 sm:h-10 bg-carflex-navy rounded-full flex items-center justify-center flex-shrink-0">
                       <Car className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                     </div>
-                    <h2 className="text-base sm:text-lg font-bold text-foreground">SELECIONE O VEÍCULO</h2>
+                    <h2 className="text-base sm:text-lg font-bold text-carflex-navy">SELECIONE O VEÍCULO</h2>
                   </div>
 
                   {/* Vehicle Grid */}
@@ -200,15 +214,17 @@ const Orcamento = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.3, delay: index * 0.1 }}
                         onClick={() => setSelectedVeiculo(veiculo.id)}
-                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-300 ${
+                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-300 backdrop-blur-sm ${
                           selectedVeiculo === veiculo.id
-                            ? "border-accent bg-accent/10 shadow-lg shadow-accent/20"
-                            : "border-border/30 bg-secondary/30 hover:border-accent/50 hover:bg-secondary/50"
+                            ? "border-accent bg-carflex-navy shadow-lg shadow-accent/30"
+                            : "border-carflex-navy/20 bg-white/80 hover:border-accent/50 hover:bg-white/90"
                         }`}
                       >
                         <div className="flex items-center gap-3 sm:gap-4">
                           {/* Vehicle Image */}
-                          <div className="w-24 h-16 sm:w-32 sm:h-20 bg-foreground/5 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
+                          <div className={`w-24 h-16 sm:w-32 sm:h-20 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden ${
+                            selectedVeiculo === veiculo.id ? "bg-white/10" : "bg-carflex-navy/5"
+                          }`}>
                             <img 
                               src={veiculo.image} 
                               alt={veiculo.name}
@@ -219,21 +235,23 @@ const Orcamento = () => {
                           {/* Vehicle Info */}
                           <div className="flex-1 min-w-0">
                             <h3 className={`font-bold text-sm sm:text-base transition-colors ${
-                              selectedVeiculo === veiculo.id ? "text-accent" : "text-foreground"
+                              selectedVeiculo === veiculo.id ? "text-accent" : "text-carflex-navy"
                             }`}>
                               {veiculo.name}
                             </h3>
-                            <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2">{veiculo.description}</p>
+                            <p className={`text-xs sm:text-sm line-clamp-2 ${
+                              selectedVeiculo === veiculo.id ? "text-white/70" : "text-carflex-navy/60"
+                            }`}>{veiculo.description}</p>
                           </div>
 
                           {/* Selection Indicator */}
                           <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
                             selectedVeiculo === veiculo.id
                               ? "border-accent bg-accent"
-                              : "border-muted-foreground/30"
+                              : "border-carflex-navy/30"
                           }`}>
                             {selectedVeiculo === veiculo.id && (
-                              <Check className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
+                              <Check className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                             )}
                           </div>
                         </div>
@@ -241,18 +259,18 @@ const Orcamento = () => {
                     ))}
                   </div>
 
-                  <p className="text-[10px] sm:text-xs text-muted-foreground/60 italic text-center mt-2">*Imagens ilustrativas</p>
+                  <p className="text-[10px] sm:text-xs text-carflex-navy/50 italic text-center mt-2">*Imagens ilustrativas</p>
                 </div>
 
                 {/* Right Column - Form */}
                 <div className="space-y-4 sm:space-y-6">
                   {/* Tipo de Locação */}
-                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
+                  <div className="bg-carflex-navy rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-carflex-navy-light/50 shadow-lg">
                     <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <Car className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                       </div>
-                      <h2 className="text-base sm:text-lg font-bold text-foreground">TIPO DE LOCAÇÃO</h2>
+                      <h2 className="text-base sm:text-lg font-bold text-white">TIPO DE LOCAÇÃO</h2>
                     </div>
 
                     <p className="text-xs sm:text-sm text-accent font-medium mb-3 sm:mb-4 bg-accent/10 p-2.5 sm:p-3 rounded-lg">
@@ -261,9 +279,9 @@ const Orcamento = () => {
 
                     <div className="space-y-3 sm:space-y-4">
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Selecione um perfil</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Selecione um perfil</Label>
                         <Select value={formData.perfil} onValueChange={(v) => setFormData({...formData, perfil: v})}>
-                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                          <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm">
                             <SelectValue placeholder="Selecione um perfil" />
                           </SelectTrigger>
                           <SelectContent>
@@ -275,9 +293,9 @@ const Orcamento = () => {
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Grupo de veículos escolhido</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Grupo de veículos escolhido</Label>
                         <Select value={selectedVeiculo} onValueChange={setSelectedVeiculo}>
-                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                          <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm">
                             <SelectValue placeholder="Selecione uma categoria" />
                           </SelectTrigger>
                           <SelectContent>
@@ -291,72 +309,72 @@ const Orcamento = () => {
                   </div>
 
                   {/* Seus Dados */}
-                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
+                  <div className="bg-carflex-navy rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-carflex-navy-light/50 shadow-lg">
                     <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <User className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                       </div>
-                      <h2 className="text-base sm:text-lg font-bold text-foreground">SEUS DADOS</h2>
+                      <h2 className="text-base sm:text-lg font-bold text-white">SEUS DADOS</h2>
                     </div>
 
                     <div className="space-y-3 sm:space-y-4">
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Nome da empresa</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Nome da empresa</Label>
                         <Input 
                           value={formData.nomeEmpresa}
                           onChange={(e) => setFormData({...formData, nomeEmpresa: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CNPJ</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">CNPJ</Label>
                         <Input 
                           value={formData.cnpj}
                           onChange={(e) => setFormData({...formData, cnpj: e.target.value})}
                           placeholder="00.000.000/0000-00"
-                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
+                          className="bg-carflex-navy-light border-carflex-navy-light text-white placeholder:text-white/40 h-10 sm:h-11 text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Seu nome</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Seu nome</Label>
                         <Input 
                           value={formData.nome}
                           onChange={(e) => setFormData({...formData, nome: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">E-Mail</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">E-Mail</Label>
                         <Input 
                           type="email"
                           value={formData.email}
                           onChange={(e) => setFormData({...formData, email: e.target.value})}
-                          className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                          className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Celular</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Celular</Label>
                         <Input 
                           value={formData.celular}
                           onChange={(e) => setFormData({...formData, celular: e.target.value})}
                           placeholder="(00) 00000-0000"
-                          className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
+                          className="bg-carflex-navy-light border-carflex-navy-light text-white placeholder:text-white/40 h-10 sm:h-11 text-sm"
                           required
                         />
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Como nos encontrou?</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Como nos encontrou?</Label>
                         <Select value={formData.comoNosEncontrou} onValueChange={(v) => setFormData({...formData, comoNosEncontrou: v})}>
-                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                          <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm">
                             <SelectValue placeholder="Selecione" />
                           </SelectTrigger>
                           <SelectContent>
@@ -371,19 +389,19 @@ const Orcamento = () => {
                   </div>
 
                   {/* Dados da Locação */}
-                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
+                  <div className="bg-carflex-navy rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-carflex-navy-light/50 shadow-lg">
                     <div className="flex items-center gap-2 sm:gap-3 mb-4 sm:mb-5">
                       <div className="w-8 h-8 sm:w-10 sm:h-10 bg-accent/20 rounded-full flex items-center justify-center flex-shrink-0">
                         <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-accent" />
                       </div>
-                      <h2 className="text-base sm:text-lg font-bold text-foreground">DADOS DA LOCAÇÃO</h2>
+                      <h2 className="text-base sm:text-lg font-bold text-white">DADOS DA LOCAÇÃO</h2>
                     </div>
 
                     <div className="space-y-3 sm:space-y-4">
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Local de retirada do veículo</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Local de retirada do veículo</Label>
                         <Select value={formData.localRetirada} onValueChange={(v) => setFormData({...formData, localRetirada: v})}>
-                          <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-xs sm:text-sm">
+                          <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-xs sm:text-sm">
                             <SelectValue placeholder="Selecione um local" />
                           </SelectTrigger>
                           <SelectContent>
@@ -396,18 +414,18 @@ const Orcamento = () => {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da retirada</Label>
+                          <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da retirada</Label>
                           <Input 
                             type="date" 
                             value={formData.dataRetirada}
                             onChange={(e) => setFormData({...formData, dataRetirada: e.target.value})}
-                            className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                            className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                           />
                         </div>
                         <div>
-                          <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Horário da retirada</Label>
+                          <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Horário da retirada</Label>
                           <Select value={formData.horarioRetirada} onValueChange={(v) => setFormData({...formData, horarioRetirada: v})}>
-                            <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                            <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm">
                               <SelectValue placeholder="Horário" />
                             </SelectTrigger>
                             <SelectContent>
@@ -421,18 +439,18 @@ const Orcamento = () => {
 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
-                          <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da entrega</Label>
+                          <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da entrega</Label>
                           <Input 
                             type="date" 
                             value={formData.dataEntrega}
                             onChange={(e) => setFormData({...formData, dataEntrega: e.target.value})}
-                            className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                            className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                           />
                         </div>
                         <div>
-                          <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Horário da entrega</Label>
+                          <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Horário da entrega</Label>
                           <Select value={formData.horarioEntrega} onValueChange={(v) => setFormData({...formData, horarioEntrega: v})}>
-                            <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
+                            <SelectTrigger className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm">
                               <SelectValue placeholder="Horário" />
                             </SelectTrigger>
                             <SelectContent>
@@ -445,21 +463,21 @@ const Orcamento = () => {
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 block">Quanto tempo você deseja permanecer com o veículo?</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-2 sm:mb-3 block">Quanto tempo você deseja permanecer com o veículo?</Label>
                         <RadioGroup value={formData.tempoLocacao} onValueChange={(v) => setFormData({...formData, tempoLocacao: v})} className="flex flex-col gap-2 sm:flex-row sm:gap-4">
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem value="menos30" id="menos30" className="border-accent text-accent" />
-                            <Label htmlFor="menos30" className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">Menos de 30 dias</Label>
+                            <Label htmlFor="menos30" className="font-normal cursor-pointer text-white text-xs sm:text-sm">Menos de 30 dias</Label>
                           </div>
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem value="mais30" id="mais30" className="border-accent text-accent" />
-                            <Label htmlFor="mais30" className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">30 dias ou mais</Label>
+                            <Label htmlFor="mais30" className="font-normal cursor-pointer text-white text-xs sm:text-sm">30 dias ou mais</Label>
                           </div>
                         </RadioGroup>
                       </div>
 
                       <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 block">Selecione a(s) franquia(s) desejada(s)</Label>
+                        <Label className="text-white/70 text-xs sm:text-sm mb-2 sm:mb-3 block">Selecione a(s) franquia(s) desejada(s)</Label>
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
                           {franquiasOptions.map((franquia) => (
                             <div key={franquia} className="flex items-center space-x-2">
@@ -469,7 +487,7 @@ const Orcamento = () => {
                                 onCheckedChange={(checked) => handleFranquiaChange(franquia, checked as boolean)}
                                 className="border-accent data-[state=checked]:bg-accent flex-shrink-0"
                               />
-                              <Label htmlFor={franquia} className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">{franquia}</Label>
+                              <Label htmlFor={franquia} className="font-normal cursor-pointer text-white text-xs sm:text-sm">{franquia}</Label>
                             </div>
                           ))}
                         </div>
@@ -478,18 +496,18 @@ const Orcamento = () => {
                   </div>
 
                   {/* Captcha & Submit */}
-                  <div className="bg-secondary/50 rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-border/30">
-                    <div className="bg-accent/10 rounded-lg sm:rounded-xl p-4 sm:p-5 mb-3 sm:mb-4 flex items-center justify-center gap-3 sm:gap-4 text-2xl sm:text-3xl font-black text-foreground">
+                  <div className="bg-carflex-navy rounded-xl sm:rounded-2xl p-4 sm:p-6 border border-carflex-navy-light/50 shadow-lg">
+                    <div className="bg-accent/10 rounded-lg sm:rounded-xl p-4 sm:p-5 mb-3 sm:mb-4 flex items-center justify-center gap-3 sm:gap-4 text-2xl sm:text-3xl font-black text-white">
                       <span>{captcha.num1}</span>
                       <span className="text-accent">+</span>
                       <span>{captcha.num2}</span>
                     </div>
-                    <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Insira a resposta da operação:</Label>
+                    <Label className="text-white/70 text-xs sm:text-sm mb-1.5 sm:mb-2 block">Insira a resposta da operação:</Label>
                     <Input 
                       type="number"
                       value={captchaAnswer}
                       onChange={(e) => setCaptchaAnswer(e.target.value)}
-                      className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                      className="bg-carflex-navy-light border-carflex-navy-light text-white h-10 sm:h-11 text-sm"
                       required
                     />
                   </div>
