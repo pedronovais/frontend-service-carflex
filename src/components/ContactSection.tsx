@@ -18,7 +18,7 @@ const ContactSection = () => {
     <section id="contato" className="py-12 sm:py-16 md:py-24 bg-gray-100 relative overflow-hidden">
       {/* Blurred fleet background */}
       <div className="absolute inset-0">
-        <img src={fleetBackground} alt="" className="w-full h-full object-cover object-center opacity-20 blur-[2px] scale-110" />
+        <img src={fleetBackground} alt="" className="w-full h-full object-cover object-center opacity-20 blur-[2px] scale-110" loading="lazy" decoding="async" />
         <div className="absolute inset-0 bg-gradient-to-b from-gray-100/80 via-gray-100/60 to-gray-100/80" />
       </div>
 

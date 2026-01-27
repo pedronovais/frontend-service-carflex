@@ -42,7 +42,7 @@ const PrinciplesSection = () => {
             transition={{ duration: 0.7 }}
             className="relative rounded-3xl overflow-hidden min-h-[400px] lg:min-h-[500px]"
           >
-            <img src={principlesImage} alt="Atendimento Carflex" className="absolute inset-0 w-full h-full object-cover" />
+            <img src={principlesImage} alt="Atendimento Carflex" className="absolute inset-0 w-full h-full object-cover" loading="lazy" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-secondary/40 to-transparent" />
             
             <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">

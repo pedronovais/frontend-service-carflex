@@ -73,7 +73,7 @@ Os arquivos serão gerados na pasta `dist/`.
 
 ## Configuração de Envio de Email
 
-O formulário de orçamento está configurado para enviar emails diretamente para `pedrodiasnovais1@gmail.com` usando **FormSubmit**, um serviço gratuito e simples que não requer configuração.
+O formulário de orçamento está configurado para enviar emails diretamente para `administrativo@carflexlocadora.com.br` usando **FormSubmit**, um serviço gratuito e simples que não requer configuração.
 
 ### Como funciona:
 

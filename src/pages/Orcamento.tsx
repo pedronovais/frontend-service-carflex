@@ -174,20 +174,20 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
     try {
       // Usar FormSubmit - serviço gratuito e simples
       const formDataToSend = new FormData();
-      formDataToSend.append("email", "pedrodiasnovais1@gmail.com");
+      formDataToSend.append("email", "administrativo@carflexlocadora.com.br");
       formDataToSend.append("subject", `Novo Pedido de Orçamento - ${formData.nomeEmpresa}`);
       formDataToSend.append("message", emailBody);
       formDataToSend.append("_replyto", formData.email);
       formDataToSend.append("_cc", formData.email);
 
-      const response = await fetch("https://formsubmit.co/ajax/pedrodiasnovais1@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/administrativo@carflexlocadora.com.br", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
           Accept: "application/json",
         },
         body: JSON.stringify({
-          email: "pedrodiasnovais1@gmail.com",
+          email: "administrativo@carflexlocadora.com.br",
           subject: `Novo Pedido de Orçamento - ${formData.nomeEmpresa}`,
           message: emailBody,
           _replyto: formData.email,
@@ -227,11 +227,11 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
       // Fallback: usar mailto
       const mailtoSubject = encodeURIComponent(`Novo Pedido de Orçamento - ${formData.nomeEmpresa}`);
       const mailtoBody = encodeURIComponent(emailBody);
-      window.location.href = `mailto:pedrodiasnovais1@gmail.com?subject=${mailtoSubject}&body=${mailtoBody}`;
+      window.location.href = `mailto:administrativo@carflexlocadora.com.br?subject=${mailtoSubject}&body=${mailtoBody}`;
       
       toast({
         title: "Abrindo cliente de email",
-        description: "Preencha seu cliente de email e envie para pedrodiasnovais1@gmail.com",
+        description: "Preencha seu cliente de email e envie para administrativo@carflexlocadora.com.br",
       });
     }
   };
@@ -327,6 +327,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                               src={veiculo.image} 
                               alt={veiculo.name}
                               className="object-contain"
+                              loading="lazy"
+                              decoding="async"
                               style={{ 
                                 width: '140px', 
                                 height: 'auto',

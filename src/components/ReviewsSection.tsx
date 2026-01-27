@@ -119,6 +119,8 @@ const ReviewsSection = () => {
                       src={companyLogos[review.company] || clientPhoto} 
                       alt={review.company}
                       className="w-[800%] h-[800%] object-contain"
+                      loading="lazy"
+                      decoding="async"
                     />
                   </div>
                   <div>

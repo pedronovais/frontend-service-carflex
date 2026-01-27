@@ -31,7 +31,7 @@ const AboutSection = () => {
             className="relative"
           >
             <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-              <img src={aboutCoupleImage} alt="Profissional Carflex com veículo" className="w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px] object-cover object-top" />
+              <img src={aboutCoupleImage} alt="Profissional Carflex com veículo" className="w-full h-[280px] sm:h-[350px] md:h-[400px] lg:h-[500px] object-cover object-top" loading="lazy" decoding="async" />
               <div className="absolute inset-0 bg-gradient-to-t from-secondary/30 via-transparent to-transparent" />
             </div>
 
@@ -51,6 +51,8 @@ const AboutSection = () => {
                     src={carflexStamp} 
                     alt="Selo Carflex Locadora de Veículos" 
                     className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 object-contain group-hover:rotate-12 transition-transform duration-500"
+                    loading="lazy"
+                    decoding="async"
                   />
                 </div>
                 {/* Subtle shine effect */}

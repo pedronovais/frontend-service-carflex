@@ -69,30 +69,31 @@ const FleetSection = () => {
               className="group cursor-pointer"
             >
               <motion.div
-                whileHover={{ y: -8, transition: { duration: 0.3 } }}
-                className="relative h-full bg-gradient-to-br from-gray-50 to-white rounded-xl sm:rounded-2xl p-2 sm:p-3 border border-gray-100 shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col"
+                className="relative h-full bg-gradient-to-br from-gray-50 to-white rounded-xl sm:rounded-2xl p-2 sm:p-3 border border-gray-100 shadow-lg sm:hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col sm:group-hover:-translate-y-2"
               >
-                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${category.accentColor} opacity-0 group-hover:opacity-100 transition-opacity duration-300`} />
+                <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${category.accentColor} opacity-0 sm:group-hover:opacity-100 transition-opacity duration-300`} />
 
                 <div className="absolute top-0 right-0 w-16 h-16">
-                  <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-gray-200 group-hover:border-accent/50 transition-colors rounded-tr-lg" />
+                  <div className="absolute top-2 right-2 w-8 h-8 border-t-2 border-r-2 border-gray-200 sm:group-hover:border-accent/50 transition-colors rounded-tr-lg" />
                 </div>
 
                 <div className="relative h-56 sm:h-64 md:h-80 lg:h-96 mb-1 sm:mb-2 flex items-center justify-center flex-shrink-0 overflow-visible">
                   <img
                     src={category.image}
                     alt={category.name}
+                    loading="lazy"
+                    decoding="async"
                     className={`h-full w-full object-contain ${
                       category.name === "Intermediário" || category.name === "Motos"
                         ? "scale-90 sm:scale-100" 
                         : "scale-[2.25] sm:scale-100"
-                    } group-hover:scale-110 sm:group-hover:scale-110 transition-transform duration-500`}
+                    } sm:group-hover:scale-110 transition-transform duration-500`}
                     style={{ mixBlendMode: 'multiply' }}
                   />
                 </div>
 
                 <div className="text-center space-y-1 sm:space-y-2 flex-grow flex flex-col justify-center">
-                  <h3 className="font-bold text-sm sm:text-lg text-secondary group-hover:text-accent transition-colors">{category.name}</h3>
+                  <h3 className="font-bold text-sm sm:text-lg text-secondary sm:group-hover:text-accent transition-colors">{category.name}</h3>
                   <p className="text-[10px] sm:text-xs text-secondary/50 leading-relaxed min-h-[2rem] sm:min-h-[2.5rem] hidden sm:block">{category.description}</p>
                 </div>
 

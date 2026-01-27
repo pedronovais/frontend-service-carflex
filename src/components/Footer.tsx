@@ -6,7 +6,7 @@ const Footer = () => {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
           {/* Logo and description */}
           <div className="col-span-2 space-y-4">
-            <img src={carflexLogoWhite} alt="Carflex - Locadora de Veículos" className="h-6 sm:h-8 w-auto" />
+            <img src={carflexLogoWhite} alt="Carflex - Locadora de Veículos" className="h-6 sm:h-8 w-auto" loading="lazy" decoding="async" />
             <p className="text-xs sm:text-sm text-muted-foreground max-w-sm">
               Locação de veículos pensada para manter operações em movimento. 
               Soluções em frota corporativa com foco em continuidade e previsibilidade.

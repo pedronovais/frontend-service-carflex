@@ -117,7 +117,7 @@ const HeroSection = () => {
         duration: 0.8,
         delay: 0.5
       }} className="relative max-w-3xl mx-auto">
-        <img src={heroFleet} alt="Frota diversificada Carflex - Polo, Strada e Moto" className="w-full h-auto drop-shadow-2xl" />
+        <img src={heroFleet} alt="Frota diversificada Carflex - Polo, Strada e Moto" className="w-full h-auto drop-shadow-2xl" loading="eager" decoding="async" fetchPriority="high" />
         {/* Subtle glow under car */}
         <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-8 bg-accent/20 blur-3xl rounded-full" />
       </motion.div>

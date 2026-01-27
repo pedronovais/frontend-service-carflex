@@ -102,7 +102,7 @@ const ClientsSection = () => {
               duration: 0.3
             }
           }} className="group cursor-pointer flex items-center justify-center w-full">
-                <img src={client.logo} alt={client.name} className="h-28 sm:h-24 md:h-28 lg:h-36 w-auto max-w-[200px] sm:max-w-[220px] object-contain transition-all duration-500" />
+                <img src={client.logo} alt={client.name} className="h-28 sm:h-24 md:h-28 lg:h-36 w-auto max-w-[200px] sm:max-w-[220px] object-contain transition-all duration-500" loading="lazy" decoding="async" />
               </motion.div>)}
           </div>
         </motion.div>
