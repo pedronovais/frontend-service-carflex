@@ -30,7 +30,7 @@ const Header = () => {
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-    
+
     // If we're not on the home page, navigate to home first
     if (location.pathname !== "/") {
       navigate("/" + href);
@@ -54,19 +54,18 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50"
           : "bg-transparent"
-      }`}
+        }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <a href="/" onClick={handleLogoClick} className="flex items-center">
-            <img 
-              src={carflexLogoWhite} 
-              alt="Carflex - Locadora de Veículos" 
+            <img
+              src={carflexLogoWhite}
+              alt="Carflex - Locadora de Veículos"
               className="h-6 md:h-8 w-auto"
             />
           </a>
@@ -89,7 +88,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
-              <Button variant="outline" size="sm" className="gap-2 border-border/50 bg-background/30 backdrop-blur-sm text-foreground hover:bg-background/50 hover:border-foreground/50">
+              <Button size="sm" className="gap-2 bg-accent hover:bg-accent/90 text-white font-semibold shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105">
                 <Phone className="w-4 h-4" />
                 Fale Conosco
               </Button>

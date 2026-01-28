@@ -35,8 +35,8 @@ const HeroSection = () => {
         duration: 0.6,
         delay: 0.1
       }} className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-4">
-        Frota premium para
-        <span className="block text-accent">sua operação</span>
+        Locação de veículos para
+        <span className="block text-accent">você e sua empresa</span>
       </motion.h1>
 
       {/* Subtitle */}
@@ -50,7 +50,7 @@ const HeroSection = () => {
         duration: 0.6,
         delay: 0.2
       }} className="text-base sm:text-lg text-muted-foreground max-w-md mx-auto mb-8 px-2">
-        Locação simplificada, suporte 24h e frota sempre disponível.
+        Soluções completas em locação com suporte 24h e frota sempre disponível.
       </motion.p>
 
       {/* CTA Buttons */}

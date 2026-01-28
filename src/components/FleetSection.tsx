@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import fleetEconomico from "@/assets/kiwid.png";
 import fleetIntermediario from "@/assets/polotrack.png";
-import fleetUtilitarios from "@/assets/tcross.png";
+import fleetUtilitarios from "@/assets/saveiro.png";
 import fleetHatch from "@/assets/ka.png";
 import fleetMoto from "@/assets/bros.png";
 
@@ -83,11 +83,10 @@ const FleetSection = () => {
                     alt={category.name}
                     loading="lazy"
                     decoding="async"
-                    className={`h-full w-full object-contain ${
-                      category.name === "Intermediário" || category.name === "Motos"
-                        ? "scale-90 sm:scale-100" 
+                    className={`h-full w-full object-contain ${category.name === "Intermediário" || category.name === "Motos"
+                        ? "scale-90 sm:scale-100"
                         : "scale-[2.25] sm:scale-100"
-                    } sm:group-hover:scale-110 transition-transform duration-500`}
+                      } sm:group-hover:scale-110 transition-transform duration-500`}
                     style={{ mixBlendMode: 'multiply' }}
                   />
                 </div>

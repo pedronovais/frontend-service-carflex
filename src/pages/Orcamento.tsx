@@ -54,7 +54,7 @@ const formatPhone = (value: string) => {
 // Vehicle images
 import fleetEconomico from "@/assets/kiwid.png";
 import fleetIntermediario from "@/assets/polotrack.png";
-import fleetUtilitarios from "@/assets/tcross.png";
+import fleetUtilitarios from "@/assets/saveiro.png";
 import fleetHatch from "@/assets/ka.png";
 import fleetMoto from "@/assets/bros.png";
 
@@ -72,18 +72,17 @@ const Orcamento = () => {
   const gruposVeiculos = {
     "Econômico": [
       { id: "Kwid", name: "Kwid" },
-      { id: "Onix", name: "Onix" },
-      { id: "HB20", name: "HB20" },
+      { id: "Mobi", name: "Mobi" },
     ],
     "Intermediário": [
       { id: "Polo Track", name: "Polo Track" },
-      { id: "Virtus", name: "Virtus" },
-      { id: "Civic", name: "Civic" },
+      { id: "Voyage", name: "Voyage" },
+      { id: "HB20 Sedan", name: "HB20 Sedan" },
     ],
     "Utilitários": [
-      { id: "T-Cross", name: "T-Cross" },
-      { id: "Compass", name: "Compass" },
-      { id: "Tiguan", name: "Tiguan" },
+      { id: "Strada", name: "Strada" },
+      { id: "Saveiro", name: "Saveiro" },
+      { id: "Oroch", name: "Oroch" },
     ],
     "Hatch": [
       { id: "Ka", name: "Ka" },
@@ -126,7 +125,7 @@ const Orcamento = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!selectedGrupo) {
       toast({
         title: "Selecione um grupo",
@@ -223,12 +222,12 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
       }
     } catch (error) {
       console.error("Erro ao enviar email:", error);
-      
+
       // Fallback: usar mailto
       const mailtoSubject = encodeURIComponent(`Novo Pedido de Orçamento - ${formData.nomeEmpresa}`);
       const mailtoBody = encodeURIComponent(emailBody);
       window.location.href = `mailto:administrativo@carflexlocadora.com.br?subject=${mailtoSubject}&body=${mailtoBody}`;
-      
+
       toast({
         title: "Abrindo cliente de email",
         description: "Preencha seu cliente de email e envie para administrativo@carflexlocadora.com.br",
@@ -242,7 +241,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
       {/* Hero Banner */}
       <section className="pt-20 bg-secondary relative overflow-hidden">
-        <div 
+        <div
           className="absolute inset-0 opacity-10"
           style={{
             backgroundImage: `linear-gradient(135deg, transparent 25%, hsl(var(--accent) / 0.1) 25%, hsl(var(--accent) / 0.1) 50%, transparent 50%, transparent 75%, hsl(var(--accent) / 0.1) 75%)`,
@@ -265,7 +264,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
             </h1>
           </motion.div>
         </div>
-        
+
         {/* Diagonal cut */}
         <div className="absolute bottom-0 left-0 right-0 h-8 bg-background" style={{ clipPath: 'polygon(0 100%, 100% 0, 100% 100%)' }} />
       </section>
@@ -314,23 +313,22 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                           setSelectedGrupo(veiculo.id);
                           setSelectedVeiculo(""); // Reset veículo quando grupo muda
                         }}
-                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-300 ${
-                          selectedGrupo === veiculo.id
-                            ? "border-accent bg-accent/10 shadow-lg shadow-accent/20"
-                            : "border-border/30 bg-secondary/30 hover:border-accent/50 hover:bg-secondary/50"
-                        }`}
+                        className={`cursor-pointer rounded-xl sm:rounded-2xl p-3 sm:p-4 border-2 transition-all duration-300 ${selectedGrupo === veiculo.id
+                          ? "border-accent bg-accent/10 shadow-lg shadow-accent/20"
+                          : "border-border/30 bg-secondary/30 hover:border-accent/50 hover:bg-secondary/50"
+                          }`}
                       >
                         <div className="flex items-center gap-3 sm:gap-4">
                           {/* Vehicle Image */}
                           <div className="w-32 h-20 sm:w-40 sm:h-28 md:w-48 md:h-32 bg-foreground/5 rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden">
-                            <img 
-                              src={veiculo.image} 
+                            <img
+                              src={veiculo.image}
                               alt={veiculo.name}
                               className="object-contain"
                               loading="lazy"
                               decoding="async"
-                              style={{ 
-                                width: '140px', 
+                              style={{
+                                width: '140px',
                                 height: 'auto',
                                 maxWidth: 'none'
                               }}
@@ -339,20 +337,18 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                           {/* Vehicle Info */}
                           <div className="flex-1 min-w-0">
-                            <h3 className={`font-bold text-sm sm:text-base transition-colors ${
-                              selectedVeiculo === veiculo.id ? "text-accent" : "text-foreground"
-                            }`}>
+                            <h3 className={`font-bold text-sm sm:text-base transition-colors ${selectedVeiculo === veiculo.id ? "text-accent" : "text-foreground"
+                              }`}>
                               {veiculo.name}
                             </h3>
                             <p className="text-muted-foreground text-xs sm:text-sm line-clamp-2">{veiculo.description}</p>
                           </div>
 
                           {/* Selection Indicator */}
-                          <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${
-                            selectedVeiculo === veiculo.id
-                              ? "border-accent bg-accent"
-                              : "border-muted-foreground/30"
-                          }`}>
+                          <div className={`w-5 h-5 sm:w-6 sm:h-6 rounded-full border-2 flex items-center justify-center flex-shrink-0 transition-all ${selectedVeiculo === veiculo.id
+                            ? "border-accent bg-accent"
+                            : "border-muted-foreground/30"
+                            }`}>
                             {selectedVeiculo === veiculo.id && (
                               <Check className="w-3 h-3 sm:w-4 sm:h-4 text-secondary" />
                             )}
@@ -376,15 +372,11 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                       <h2 className="text-base sm:text-lg font-bold text-foreground">TIPO DE LOCAÇÃO</h2>
                     </div>
 
-                    <p className="text-xs sm:text-sm text-accent font-medium mb-3 sm:mb-4 bg-accent/10 p-2.5 sm:p-3 rounded-lg">
-                      *Nossas locações para Pessoa Física (PF) estão temporariamente suspensas.
-                    </p>
-
                     <div className="space-y-3 sm:space-y-4">
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Grupo</Label>
-                        <Select 
-                          value={selectedGrupo} 
+                        <Select
+                          value={selectedGrupo}
                           onValueChange={(v) => {
                             setSelectedGrupo(v);
                             setSelectedVeiculo(""); // Reset veículo quando grupo muda
@@ -403,8 +395,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Veículos do grupo</Label>
-                        <Select 
-                          value={selectedVeiculo} 
+                        <Select
+                          value={selectedVeiculo}
                           onValueChange={setSelectedVeiculo}
                           disabled={!selectedGrupo}
                         >
@@ -433,7 +425,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                     <div className="space-y-3 sm:space-y-4">
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CPF ou CNPJ</Label>
-                        <Select value={formData.tipoDocumento} onValueChange={(v) => setFormData({...formData, tipoDocumento: v, cnpj: "", cpf: ""})}>
+                        <Select value={formData.tipoDocumento} onValueChange={(v) => setFormData({ ...formData, tipoDocumento: v, cnpj: "", cpf: "" })}>
                           <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
                             <SelectValue placeholder="Selecione CPF ou CNPJ" />
                           </SelectTrigger>
@@ -446,9 +438,9 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Nome da empresa</Label>
-                        <Input 
+                        <Input
                           value={formData.nomeEmpresa}
-                          onChange={(e) => setFormData({...formData, nomeEmpresa: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, nomeEmpresa: e.target.value })}
                           className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
                           required
                         />
@@ -457,9 +449,9 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                       {formData.tipoDocumento === "cpf" && (
                         <div>
                           <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CPF</Label>
-                          <Input 
+                          <Input
                             value={formData.cpf}
-                            onChange={(e) => setFormData({...formData, cpf: formatCPF(e.target.value)})}
+                            onChange={(e) => setFormData({ ...formData, cpf: formatCPF(e.target.value) })}
                             placeholder="000.000.000-00"
                             className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
                             maxLength={14}
@@ -471,9 +463,9 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                       {formData.tipoDocumento === "cnpj" && (
                         <div>
                           <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">CNPJ</Label>
-                          <Input 
+                          <Input
                             value={formData.cnpj}
-                            onChange={(e) => setFormData({...formData, cnpj: formatCNPJ(e.target.value)})}
+                            onChange={(e) => setFormData({ ...formData, cnpj: formatCNPJ(e.target.value) })}
                             placeholder="00.000.000/0000-00"
                             className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
                             maxLength={18}
@@ -484,9 +476,9 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Seu nome</Label>
-                        <Input 
+                        <Input
                           value={formData.nome}
-                          onChange={(e) => setFormData({...formData, nome: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, nome: e.target.value })}
                           className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
                           required
                         />
@@ -494,10 +486,10 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">E-Mail</Label>
-                        <Input 
+                        <Input
                           type="email"
                           value={formData.email}
-                          onChange={(e) => setFormData({...formData, email: e.target.value})}
+                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                           className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
                           required
                         />
@@ -505,9 +497,9 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Celular</Label>
-                        <Input 
+                        <Input
                           value={formData.celular}
-                          onChange={(e) => setFormData({...formData, celular: formatPhone(e.target.value)})}
+                          onChange={(e) => setFormData({ ...formData, celular: formatPhone(e.target.value) })}
                           placeholder="(00) 00000-0000"
                           className="bg-secondary border-border/50 text-foreground placeholder:text-muted-foreground/50 h-10 sm:h-11 text-sm"
                           maxLength={15}
@@ -517,7 +509,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Como nos encontrou?</Label>
-                        <Select value={formData.comoNosEncontrou} onValueChange={(v) => setFormData({...formData, comoNosEncontrou: v})}>
+                        <Select value={formData.comoNosEncontrou} onValueChange={(v) => setFormData({ ...formData, comoNosEncontrou: v })}>
                           <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm">
                             <SelectValue placeholder="Selecione" />
                           </SelectTrigger>
@@ -544,7 +536,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                     <div className="space-y-3 sm:space-y-4">
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Local de retirada do veículo</Label>
-                        <Select value={formData.localRetirada} onValueChange={(v) => setFormData({...formData, localRetirada: v})}>
+                        <Select value={formData.localRetirada} onValueChange={(v) => setFormData({ ...formData, localRetirada: v })}>
                           <SelectTrigger className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-xs sm:text-sm">
                             <SelectValue placeholder="Selecione um local" />
                           </SelectTrigger>
@@ -557,19 +549,19 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                         <div>
                           <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da retirada</Label>
-                          <Input 
-                            type="date" 
+                          <Input
+                            type="date"
                             value={formData.dataRetirada}
-                            onChange={(e) => setFormData({...formData, dataRetirada: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, dataRetirada: e.target.value })}
                             className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
                           />
                         </div>
                         <div>
                           <Label className="text-muted-foreground text-xs sm:text-sm mb-1.5 sm:mb-2 block">Data da entrega</Label>
-                          <Input 
-                            type="date" 
+                          <Input
+                            type="date"
                             value={formData.dataEntrega}
-                            onChange={(e) => setFormData({...formData, dataEntrega: e.target.value})}
+                            onChange={(e) => setFormData({ ...formData, dataEntrega: e.target.value })}
                             className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
                           />
                         </div>
@@ -577,7 +569,7 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
 
                       <div>
                         <Label className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 block">Duração do Contrato</Label>
-                        <RadioGroup value={formData.duracaoContrato} onValueChange={(v) => setFormData({...formData, duracaoContrato: v})} className="flex flex-col gap-2 sm:flex-row sm:gap-4">
+                        <RadioGroup value={formData.duracaoContrato} onValueChange={(v) => setFormData({ ...formData, duracaoContrato: v })} className="flex flex-col gap-2 sm:flex-row sm:gap-4">
                           <div className="flex items-center space-x-2">
                             <RadioGroupItem value="3meses" id="3meses" className="border-accent text-accent" />
                             <Label htmlFor="3meses" className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">3 meses</Label>
@@ -591,8 +583,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                     </div>
                   </div>
 
-                  <Button 
-                    type="submit" 
+                  <Button
+                    type="submit"
                     className="w-full bg-accent hover:bg-accent/90 text-secondary font-bold py-5 sm:py-6 text-sm sm:text-lg shadow-lg shadow-accent/25 rounded-lg sm:rounded-xl"
                   >
                     <Check className="w-4 h-4 sm:w-5 sm:h-5 mr-1.5 sm:mr-2" />
