@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -85,14 +84,16 @@ const Orcamento = () => {
       { id: "Oroch", name: "Oroch" },
     ],
     "Hatch": [
-      { id: "Ka", name: "Ka" },
-      { id: "Gol", name: "Gol" },
-      { id: "208", name: "208" },
+      { id: "Ford Ka", name: "Ford Ka" },
+      { id: "Onix", name: "Onix" },
+      { id: "Argo", name: "Argo" },
+      { id: "HB20", name: "HB20" },
+      { id: "C3", name: "C3" },
     ],
     "Motos": [
-      { id: "Bros", name: "Bros" },
-      { id: "CG", name: "CG" },
-      { id: "XRE", name: "XRE" },
+      { id: "XRE 300", name: "XRE 300" },
+      { id: "Bros 160", name: "Bros 160" },
+      { id: "Fan 160", name: "Fan 160" },
     ],
   };
 
@@ -120,8 +121,17 @@ const Orcamento = () => {
     localRetirada: "sede",
     dataRetirada: "",
     dataEntrega: "",
-    duracaoContrato: "",
   });
+
+  // Calculate duration in days based on dates
+  const calcularDuracao = (dataRetirada: string, dataEntrega: string): number => {
+    if (!dataRetirada || !dataEntrega) return 0;
+    const inicio = new Date(dataRetirada);
+    const fim = new Date(dataEntrega);
+    const diffTime = Math.abs(fim.getTime() - inicio.getTime());
+    const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    return diffDays;
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -144,6 +154,19 @@ const Orcamento = () => {
       return;
     }
 
+    // Validate minimum duration of 30 days
+    if (formData.dataRetirada && formData.dataEntrega) {
+      const duracao = calcularDuracao(formData.dataRetirada, formData.dataEntrega);
+      if (duracao < 30) {
+        toast({
+          title: "Duração mínima não atendida",
+          description: "O tempo mínimo de locação é de 30 dias. Por favor, ajuste as datas.",
+          variant: "destructive",
+        });
+        return;
+      }
+    }
+
     // Build email message
     const emailBody = `
 PEDIDO DE ORÇAMENTO - CARFLEX
@@ -164,7 +187,7 @@ DADOS DA LOCAÇÃO
 Local de Retirada: ${formData.localRetirada || "Não informado"}
 Data da Retirada: ${formData.dataRetirada || "Não informado"}
 Data da Entrega: ${formData.dataEntrega || "Não informado"}
-Duração do Contrato: ${formData.duracaoContrato === "3meses" ? "3 meses" : formData.duracaoContrato === "12meses" ? "12 meses" : "Não informado"}
+Duração: ${calcularDuracao(formData.dataRetirada, formData.dataEntrega)} dias
 
 ---
 Este email foi enviado automaticamente através do formulário de orçamento do site Carflex.
@@ -213,7 +236,6 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
           localRetirada: "sede",
           dataRetirada: "",
           dataEntrega: "",
-          duracaoContrato: "",
         });
         setSelectedGrupo("");
         setSelectedVeiculo("");
@@ -553,7 +575,10 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                             type="date"
                             value={formData.dataRetirada}
                             onChange={(e) => setFormData({ ...formData, dataRetirada: e.target.value })}
-                            className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                            className={`bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm ${formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : ''
+                              }`}
                           />
                         </div>
                         <div>
@@ -562,24 +587,36 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                             type="date"
                             value={formData.dataEntrega}
                             onChange={(e) => setFormData({ ...formData, dataEntrega: e.target.value })}
-                            className="bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm"
+                            className={`bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm ${formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
+                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                                : ''
+                              }`}
                           />
                         </div>
                       </div>
 
-                      <div>
-                        <Label className="text-muted-foreground text-xs sm:text-sm mb-2 sm:mb-3 block">Duração do Contrato</Label>
-                        <RadioGroup value={formData.duracaoContrato} onValueChange={(v) => setFormData({ ...formData, duracaoContrato: v })} className="flex flex-col gap-2 sm:flex-row sm:gap-4">
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="3meses" id="3meses" className="border-accent text-accent" />
-                            <Label htmlFor="3meses" className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">3 meses</Label>
-                          </div>
-                          <div className="flex items-center space-x-2">
-                            <RadioGroupItem value="12meses" id="12meses" className="border-accent text-accent" />
-                            <Label htmlFor="12meses" className="font-normal cursor-pointer text-foreground text-xs sm:text-sm">12 meses</Label>
-                          </div>
-                        </RadioGroup>
-                      </div>
+                      {/* Duração calculada */}
+                      {formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) > 0 && (
+                        <div className={`mt-2 p-3 rounded-lg border ${calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
+                            ? 'bg-red-500/10 border-red-500/50'
+                            : 'bg-accent/10 border-accent/20'
+                          }`}>
+                          <p className="text-sm text-foreground">
+                            <span className={`font-semibold ${calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30 ? 'text-red-500' : 'text-accent'}`}>
+                              Duração total:
+                            </span>
+                            <span className={`font-bold ${calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30 ? 'text-red-500' : 'text-accent'}`}>
+                              {' '}{calcularDuracao(formData.dataRetirada, formData.dataEntrega)}
+                            </span>
+                            <span className="text-muted-foreground"> {calcularDuracao(formData.dataRetirada, formData.dataEntrega) === 1 ? 'dia' : 'dias'}</span>
+                          </p>
+                          {calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30 && (
+                            <p className="text-xs text-red-500 mt-2 font-medium">
+                              ⚠️ O tempo mínimo de locação é de 30 dias
+                            </p>
+                          )}
+                        </div>
+                      )}
                     </div>
                   </div>
 
