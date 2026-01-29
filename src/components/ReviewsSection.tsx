@@ -30,7 +30,7 @@ const ReviewsSection = () => {
       company: "Tutori Segurança",
       role: "Diretora Administrativa",
       rating: 5,
-      text: "Profissionalismo e agilidade definem a Carflex. Em mais de 2 anos de parceria, sempre fomos muito bem atendidos. Recomendo fortemente!",
+      text: "Profissionalismo e agilidade definem a Carflex. Recomendo fortemente!",
     },
     {
       name: "Roberto Santos",

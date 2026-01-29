@@ -65,7 +65,7 @@ const HeroSection = () => {
         delay: 0.3
       }} className="flex flex-col sm:flex-row flex-wrap justify-center gap-3 sm:gap-4 mb-10 px-2">
         <Link to="/orcamento" className="w-full sm:w-auto">
-          <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-white font-semibold px-6 sm:px-8 rounded-full w-full sm:w-auto">
+          <Button size="lg" className="gap-2 bg-white hover:bg-white/90 text-accent font-semibold px-6 sm:px-8 rounded-full w-full sm:w-auto shadow-lg shadow-black/10 border border-accent/20">
             Solicitar Orçamento
             <ArrowRight className="w-5 h-5" />
           </Button>

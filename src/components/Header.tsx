@@ -55,8 +55,8 @@ const Header = () => {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50"
-          : "bg-transparent"
+        ? "bg-background/95 backdrop-blur-md shadow-lg border-b border-border/50"
+        : "bg-transparent"
         }`}
     >
       <div className="container mx-auto px-4 lg:px-8">
@@ -88,7 +88,7 @@ const Header = () => {
           {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-4">
             <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
-              <Button size="sm" className="gap-2 bg-accent hover:bg-accent/90 text-white font-semibold shadow-lg shadow-accent/25 hover:shadow-xl hover:shadow-accent/40 transition-all duration-300 hover:scale-105">
+              <Button size="sm" className="gap-2 bg-white hover:bg-white/90 text-accent font-semibold shadow-lg shadow-black/10 hover:shadow-xl hover:scale-105 transition-all duration-300 border border-accent/20">
                 <Phone className="w-4 h-4" />
                 Fale Conosco
               </Button>
@@ -120,7 +120,7 @@ const Header = () => {
               </a>
             ))}
             <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer" className="mt-4 block">
-              <Button className="w-full gap-2 bg-accent hover:bg-accent/90">
+              <Button className="w-full gap-2 bg-white hover:bg-white/90 text-accent font-semibold border border-accent/20">
                 <Phone className="w-4 h-4" />
                 Fale Conosco
               </Button>
