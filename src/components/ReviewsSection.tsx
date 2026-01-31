@@ -14,7 +14,7 @@ const ReviewsSection = () => {
     "VMC Tanatopraxia": vmcLogo,
     "Tutori Segurança": tutoriLogo,
     "Nexus Vigilância": nexusLogo,
-    "Agile Soluções": agileLogo,
+    "Agile Serviços": agileLogo,
   };
 
   const reviews = [
@@ -41,7 +41,7 @@ const ReviewsSection = () => {
     },
     {
       name: "Fernanda Lima",
-      company: "Agile Soluções",
+      company: "Agile Serviços",
       role: "Coordenadora de Logística",
       rating: 5,
       text: "Atendimento excepcional! A equipe da Carflex está sempre disponível e resolve qualquer problema rapidamente. Parceria de sucesso.",

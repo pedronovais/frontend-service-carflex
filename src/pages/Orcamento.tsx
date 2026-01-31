@@ -53,8 +53,8 @@ const formatPhone = (value: string) => {
 // Vehicle images
 import fleetEconomico from "@/assets/kiwid.png";
 import fleetIntermediario from "@/assets/polotrack.png";
-import fleetUtilitarios from "@/assets/saveiro.png";
-import fleetHatch from "@/assets/ka.png";
+import fleetUtilitarios from "@/assets/saveiroo.png";
+import fleetHatch from "@/assets/fordkaa.png";
 import fleetMoto from "@/assets/bros.png";
 
 const Orcamento = () => {
@@ -576,8 +576,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                             value={formData.dataRetirada}
                             onChange={(e) => setFormData({ ...formData, dataRetirada: e.target.value })}
                             className={`bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm ${formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
-                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                : ''
+                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                              : ''
                               }`}
                           />
                         </div>
@@ -588,8 +588,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                             value={formData.dataEntrega}
                             onChange={(e) => setFormData({ ...formData, dataEntrega: e.target.value })}
                             className={`bg-secondary border-border/50 text-foreground h-10 sm:h-11 text-sm ${formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
-                                ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
-                                : ''
+                              ? 'border-red-500 focus:border-red-500 focus:ring-red-500'
+                              : ''
                               }`}
                           />
                         </div>
@@ -598,8 +598,8 @@ Este email foi enviado automaticamente através do formulário de orçamento do 
                       {/* Duração calculada */}
                       {formData.dataRetirada && formData.dataEntrega && calcularDuracao(formData.dataRetirada, formData.dataEntrega) > 0 && (
                         <div className={`mt-2 p-3 rounded-lg border ${calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30
-                            ? 'bg-red-500/10 border-red-500/50'
-                            : 'bg-accent/10 border-accent/20'
+                          ? 'bg-red-500/10 border-red-500/50'
+                          : 'bg-accent/10 border-accent/20'
                           }`}>
                           <p className="text-sm text-foreground">
                             <span className={`font-semibold ${calcularDuracao(formData.dataRetirada, formData.dataEntrega) < 30 ? 'text-red-500' : 'text-accent'}`}>

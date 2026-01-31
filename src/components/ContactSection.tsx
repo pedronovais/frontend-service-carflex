@@ -79,7 +79,7 @@ const ContactSection = () => {
           <div className="bg-secondary rounded-2xl sm:rounded-3xl p-5 sm:p-8 lg:p-12 overflow-hidden relative">
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
             <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl" />
-            
+
             <div className="relative z-10 grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
               {/* Left Content */}
               <motion.div
@@ -97,24 +97,16 @@ const ContactSection = () => {
                   <span className="text-accent block">sua operação</span>
                 </h3>
                 <p className="text-white/70">
-                  Entre em contato e descubra como a Carflex pode otimizar a mobilidade 
+                  Entre em contato e descubra como a Carflex pode otimizar a mobilidade
                   da sua empresa.
                 </p>
 
                 <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
                   <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
                     <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" className="gap-2 bg-accent hover:bg-accent/90 text-secondary font-semibold rounded-full w-full sm:w-auto">
+                      <Button size="lg" className="gap-2 bg-white hover:bg-white/90 text-accent font-semibold rounded-full w-full sm:w-auto border border-accent/20 shadow-lg">
                         <MessageCircle className="w-5 h-5" />
                         Falar no WhatsApp
-                      </Button>
-                    </a>
-                  </motion.div>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }} className="w-full sm:w-auto">
-                    <a href="https://wa.me/5531984503693?text=Ol%C3%A1%2C%20vim%20pelo%20site..." target="_blank" rel="noopener noreferrer">
-                      <Button size="lg" variant="outline" className="gap-2 border-white/20 text-white hover:bg-white/10 rounded-full w-full sm:w-auto">
-                        <Phone className="w-5 h-5" />
-                        Ligar Agora
                       </Button>
                     </a>
                   </motion.div>
@@ -158,16 +150,16 @@ const ContactSection = () => {
 
                 {/* Map */}
                 <div className="rounded-2xl overflow-hidden border border-white/10 h-64">
-                  <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.0889!2d-43.9344!3d-19.9089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa697e5a5a5a5a5%3A0x0!2sR.%20Princesa%20Isabel%2C%20269%20-%20Ipiranga%2C%20Belo%20Horizonte%20-%20MG%2C%2031160-110!5e0!3m2!1spt-BR!2sbr!4v1705000000000!5m2!1spt-BR!2sbr" 
-                    width="100%" 
-                    height="100%" 
-                    style={{ border: 0 }} 
-                    allowFullScreen 
-                    loading="lazy" 
-                    referrerPolicy="no-referrer-when-downgrade" 
-                    title="Localização Carflex - R. Princesa Isabel, 269, Ipiranga, Belo Horizonte" 
-                    className="grayscale hover:grayscale-0 transition-all duration-500" 
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3751.0889!2d-43.9344!3d-19.9089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa697e5a5a5a5a5%3A0x0!2sR.%20Princesa%20Isabel%2C%20269%20-%20Ipiranga%2C%20Belo%20Horizonte%20-%20MG%2C%2031160-110!5e0!3m2!1spt-BR!2sbr!4v1705000000000!5m2!1spt-BR!2sbr"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                    title="Localização Carflex - R. Princesa Isabel, 269, Ipiranga, Belo Horizonte"
+                    className="grayscale hover:grayscale-0 transition-all duration-500"
                   />
                 </div>
               </motion.div>
